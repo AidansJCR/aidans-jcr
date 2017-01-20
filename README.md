@@ -10,7 +10,6 @@ We encourage people to get involved with this project! Whether you are a hardcor
 For those non-techy characters amongst you, do not fear! If you have any interest in design/art, we welcome people to help contribute to the style of the site, creating icons/artwork to make the website that little bit nicer to visit.
 
 ## Requirements:
-+ Vagrant (ensure you have VirtualBox installed before using this)
 + Python3
 + Django
 + Wagtail CMS
@@ -21,11 +20,15 @@ Thank you to Jaisal Patel for making the front end look good.
 ## Getting Started
 If you want to download a local copy of the website, simply clone the repository.
 
-Once installed, ensure you have Vagrant installed. Then run:
+You might also need to install certain libraries for Linux, as found on the Getting Started with Wagtail page.
 
-```bash
-vagrant up
-vagrant ssh
-```
-This will create the virtual machine needed to run the site and will SSH you into it.
+## Implemented so far:
++ Basic Aidan's backend theming
++ CIS Authentication
 
+## Things to continue/start:
++ Increase Aidan's backend theming
++ Design page types for Django to use (with the theme).
++ Start the Event Manager
++ Link with Facebook
++ Sort out deployment
