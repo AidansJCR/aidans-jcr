@@ -9,13 +9,23 @@ We encourage people to get involved with this project! Whether you are a hardcor
 
 For those non-techy characters amongst you, do not fear! If you have any interest in design/art, we welcome people to help contribute to the style of the site, creating icons/artwork to make the website that little bit nicer to visit.
 
-## Contributors
-Jaisal Patel for the website styling, and Ryan Collins for the backend code/logic.
-
 ## Requirements:
-+ Vagrant
++ Vagrant (ensure you have VirtualBox installed before using this)
 + Python3
 + Django
 + Wagtail CMS
 
+## Thanks
+Thank you to Jaisal Patel for making the front end look good.
+
+## Getting Started
+If you want to download a local copy of the website, simply clone the repository.
+
+Once installed, ensure you have Vagrant installed. Then run:
+
+```bash
+vagrant up
+vagrant ssh
+```
+This will create the virtual machine needed to run the site and will SSH you into it.
 
