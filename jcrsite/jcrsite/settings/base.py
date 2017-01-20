@@ -66,6 +66,10 @@ MIDDLEWARE = [
     'wagtail.wagtailredirects.middleware.RedirectMiddleware',
 ]
 
+AUTHENTICATION_BACKENDS = [
+        'cisauth.backends.CISBackend',
+]
+
 ROOT_URLCONF = 'jcrsite.urls'
 
 TEMPLATES = [
@@ -103,7 +107,7 @@ DATABASES = {
 # Internationalization
 # https://docs.djangoproject.com/en/1.10/topics/i18n/
 
-LANGUAGE_CODE = 'en-us'
+LANGUAGE_CODE = 'en-gb'
 
 TIME_ZONE = 'UTC'
 
@@ -135,8 +139,8 @@ MEDIA_URL = '/media/'
 
 # Wagtail settings
 
-WAGTAIL_SITE_NAME = "jcrsite"
+WAGTAIL_SITE_NAME = "St Aidan's JCR"
 
 # Base URL to use when referring to full URLs within the Wagtail admin backend -
 # e.g. in notification emails. Don't include '/admin' or a trailing slash
-BASE_URL = 'http://example.com'
+BASE_URL = 'http://st-aidans.com'
