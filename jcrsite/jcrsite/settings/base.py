@@ -67,6 +67,7 @@ MIDDLEWARE = [
 ]
 
 AUTHENTICATION_BACKENDS = [
+        'django.contrib.auth.backends.ModelBackend',
         'cisauth.backends.CISBackend',
 ]
 
