@@ -17,7 +17,7 @@ For those non-techy characters amongst you, do not fear! If you have any interes
 ## Thanks
 Thank you to Jaisal Patel for working on the final front end.
 
-The test front end (used to create basic webpages) theme is [Half Page Carousel by mdBootstrap] (http://mdbootstrap.com/material-design-for-bootstrap/).
+The test front end (used to create basic webpages) theme is found here: https://github.com/joashp/material-design-template.
 
 ## Getting Started
 If you want to download a local copy of the website, simply clone the repository.
