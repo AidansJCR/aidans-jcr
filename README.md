@@ -14,11 +14,6 @@ For those non-techy characters amongst you, do not fear! If you have any interes
 + Django
 + Wagtail CMS
 
-## Thanks
-Thank you to Jaisal Patel for working on the final front end.
-
-The test front end (used to create basic webpages) theme is found here: https://github.com/joashp/material-design-template.
-
 ## Getting Started
 If you want to download a local copy of the website, simply clone the repository.
 
@@ -29,6 +24,7 @@ You might also need to install certain libraries for Linux, as found on the Gett
 + CIS Authentication
 
 ## Things to continue/start:
++ Front End Design (using semantic ui)
 + Increase Aidan's backend theming
 + Design page types for Django to use (with the theme).
 + Start the Event Manager
