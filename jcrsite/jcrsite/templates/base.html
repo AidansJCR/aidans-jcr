@@ -35,9 +35,9 @@
 
     <body class="{% block body_class %}{% endblock %}">
         {% wagtailuserbar %}
-
+        {% include 'navbar.html' %}
         {% block content %}{% endblock %}
-
+        {% include 'footer.html' %}
         {# Global javascript #}
         <script
             src="https://code.jquery.com/jquery-3.2.0.min.js"
