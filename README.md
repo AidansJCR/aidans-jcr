@@ -25,9 +25,9 @@ You might also need to install certain libraries for Linux, as found on the Gett
 + CIS Authentication
 
 ## Things to continue/start:
-+ Front End Design (using semantic ui)
++ Front End Design using Bootstrap
 + Increase Aidan's backend theming
 + Design page types for Django to use (with the theme).
 + Start the Event Manager
 + Link with Facebook
-+ Sort out deployment
++ Sort out deployment (Heroku/AWS/DigitalOcean/Linode)
