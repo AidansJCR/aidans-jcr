@@ -3,8 +3,10 @@
 {% block body_class %}template-homepage{% endblock %}
 
 {% block content %}
+    <div class="container-fluid">
     <h1>{{  page.title }}</h1>
 
+    <div class="container-fluid">
     <div id="myCarousel" class="carousel slide" data-ride="carousel">
   <!-- Indicators -->
 
@@ -28,9 +30,8 @@
             {% endif %}
             </div>
         </div>
-        </div>
       {% endfor %}
-
+  </div>
   <!-- Left and right controls -->
   <a class="left carousel-control" href="#myCarousel" role="button" data-slide="prev">
     <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
@@ -40,6 +41,8 @@
     <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
     <span class="sr-only">Next</span>
   </a>
+    </div>
 </div>
     {{ page.body|richtext }}
+    </div>
 {% endblock %}
