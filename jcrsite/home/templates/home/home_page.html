@@ -1,11 +1,45 @@
 {% extends "base.html" %}
-
+{% load wagtailcore_tags wagtailimages_tags %}
 {% block body_class %}template-homepage{% endblock %}
 
 {% block content %}
-    <h1>Welcome to your new Wagtail site!</h1>
+    <h1>{{  page.title }}</h1>
 
-    <p>You can access the admin interface <a href="{% url 'wagtailadmin_home' %}">here</a> (make sure you have run "./manage.py createsuperuser" in the console first).</p>
+    <div id="myCarousel" class="carousel slide" data-ride="carousel">
+  <!-- Indicators -->
 
-    <p>If you haven't already given the documentation a read, head over to <a href="http://docs.wagtail.io/">http://docs.wagtail.io</a> to start building on Wagtail</p>
+  <ol class="carousel-indicators">
+    {% for item in page.gallery_images.all %}
+        <li data-target="#myCarousel" data-slide-to="0" {% if item.primary %} class="active" {% endif %}></li>
+    {% endfor %}
+  </ol>
+
+  <!-- Wrapper for slides -->
+  <div class="carousel-inner" role="listbox">
+      {% for item in page.gallery_images.all %}
+        <div class="item {% if item.primary %}active{% endif %}">
+            {% image item.image fill-320x240%}
+            <div class="carousel-caption">
+            {% if item.title %}
+                <h3>{{ item.title }}</h3>
+            {% endif %}
+            {% if item.description %}
+                <p>{{ item.description }}</p>
+            {% endif %}
+            </div>
+        </div>
+        </div>
+      {% endfor %}
+
+  <!-- Left and right controls -->
+  <a class="left carousel-control" href="#myCarousel" role="button" data-slide="prev">
+    <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+    <span class="sr-only">Previous</span>
+  </a>
+  <a class="right carousel-control" href="#myCarousel" role="button" data-slide="next">
+    <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+    <span class="sr-only">Next</span>
+  </a>
+</div>
+    {{ page.body|richtext }}
 {% endblock %}
