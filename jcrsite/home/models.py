@@ -20,6 +20,21 @@ class HomePage(Page):
     content_panels = Page.content_panels + [
         FieldPanel('body', classname="full"),
         InlinePanel('gallery_images', label="Gallery Images"),  # the carousel on the page
+        InlinePanel('main_cards', label="Card Views")
+    ]
+
+
+class MainPageStaticCard(Orderable):
+    page = ParentalKey(HomePage, related_name="main_cards")
+    image = models.ForeignKey(
+        'wagtailimages.Image', on_delete=models.CASCADE, related_name='+'
+    )
+    card_title = models.CharField(blank=True, max_length=250)
+    label = RichTextField(blank=True)
+    panels = [
+        ImageChooserPanel('image'),
+        FieldPanel('card_title'),
+        FieldPanel('label'),
     ]
 
 

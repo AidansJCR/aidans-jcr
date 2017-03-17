@@ -3,10 +3,9 @@
 {% block body_class %}template-homepage{% endblock %}
 
 {% block content %}
-    <div class="container-fluid">
-    <h1>{{  page.title }}</h1>
 
-    <div class="container-fluid">
+
+
     <div id="myCarousel" class="carousel slide" data-ride="carousel">
   <!-- Indicators -->
 
@@ -20,7 +19,7 @@
   <div class="carousel-inner" role="listbox">
       {% for item in page.gallery_images.all %}
         <div class="item {% if item.primary %}active{% endif %}">
-            {% image item.image fill-320x240%}
+            {% image item.image original%}
             <div class="carousel-caption">
             {% if item.title %}
                 <h3>{{ item.title }}</h3>
@@ -42,7 +41,28 @@
     <span class="sr-only">Next</span>
   </a>
     </div>
-</div>
-    {{ page.body|richtext }}
+    <div class="container-fluid">
+        <!-- Card views -->
+
+        <div class="row">
+            {% for card in page.main_cards.all %}
+            <div class="col-sm-6 col-md-4">
+                <div class="thumbnail">
+                    {% image card.image original %}
+                    <div class="caption">
+                    <h3>{{ card.card_title }}</h3>
+                    <p>{{ card.label | richtext}}</p>
+                    <p><a href="#" class="btn btn-primary" role="button">Button</a> <a href="#" class="btn btn-default" role="button">Button</a></p>
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
     </div>
+    <div class="container-fluid">
+        <h1>{{  page.title }}</h1>
+
+        <p>{{ page.body|richtext }}</p>
+    </div>
+
 {% endblock %}
