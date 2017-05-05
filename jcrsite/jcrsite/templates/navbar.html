@@ -1,22 +1,23 @@
-{% load static %}
+{% load static navbar %}
+{% load wagtailcore_tags %}
 
 <nav class="navbar navbar-inverse bg-inverse">
   <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarText" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
   </button>
-  <a class="navbar-brand" href="#">Navbar w/ text</a>
+  <a class="navbar-brand" href="/">St Aidan's JCR</a>
   <div class="collapse navbar-collapse" id="navbarText">
     <ul class="navbar-nav mr-auto">
-      <li class="nav-item active">
-        <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" href="#">Features</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" href="#">Pricing</a>
-      </li>
-    </ul>
+      {% for menuitem in menuitems %}
+        <li class="{% if menuitem.show_dropdown %}dropdown{% endif %}{% if calling_page.url == menuitem.url %} active{% endif %}">
+            {% if menuitem.show_dropdown %}
+                <a data-toggle="dropdown" class="dropdown-toggle" href="#">{{ menuitem.title }} <b class="caret"></b></a>
+
+            {% else %}
+                <a href="{% pageurl menuitem %}">{{ menuitem.title }}</a>
+            {% endif %}
+        </li>
+    {% endfor %}
     <span class="navbar-text">
       Navbar text with an inline element
     </span>

@@ -1,5 +1,5 @@
 {% extends "base.html" %}
-{% load wagtailcore_tags wagtailimages_tags %}
+{% load wagtailcore_tags wagtailimages_tags static %}
 {% block body_class %}template-homepage{% endblock %}
 
 {% block content %}
@@ -49,7 +49,7 @@
                     <div class="card-block">
                         <h4 class="card-title">{{ card.card_title }}</h4>
                         <p class="card-text">{{card.label | richtext}}</p>
-    </div>
+                    </div>
                 </div>
             {% endfor %}
 
@@ -61,4 +61,8 @@
         <p>{{ page.body|richtext }}</p>
     </div>
 
+{% endblock %}
+
+{% block extra_js %}
+    {% static "js/isotope.pkgd.min.js" %}
 {% endblock %}

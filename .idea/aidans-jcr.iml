@@ -1,38 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <module type="PYTHON_MODULE" version="4">
-  <component name="FacetManager">
-    <facet type="django" name="Django">
-      <configuration>
-        <option name="rootFolder" value="$MODULE_DIR$/jcrsite" />
-        <option name="settingsModule" value="jcrsite/settings/dev.py" />
-        <option name="manageScript" value="manage.py" />
-        <option name="environment" value="&lt;map/&gt;" />
-        <option name="commandsToSkip" value="" />
-      </configuration>
-    </facet>
-  </component>
   <component name="NewModuleRootManager">
-    <content url="file://$MODULE_DIR$">
-      <sourceFolder url="file://$MODULE_DIR$" isTestSource="false" />
-      <sourceFolder url="file://$MODULE_DIR$/jcrsite/search" isTestSource="false" />
-      <sourceFolder url="file://$MODULE_DIR$/jcrsite/jcrsite" isTestSource="false" />
-      <sourceFolder url="file://$MODULE_DIR$/jcrsite/home" isTestSource="false" />
-      <sourceFolder url="file://$MODULE_DIR$/jcrsite/cisauth" isTestSource="false" />
-      <sourceFolder url="file://$MODULE_DIR$/jcrsite/aidansadmintheme" isTestSource="false" />
-      <sourceFolder url="file://$MODULE_DIR$/jcrsite" isTestSource="false" />
-    </content>
+    <content url="file://$MODULE_DIR$" />
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
   </component>
   <component name="TemplatesService">
-    <option name="TEMPLATE_CONFIGURATION" value="Django" />
     <option name="TEMPLATE_FOLDERS">
       <list>
-        <option value="$MODULE_DIR$" />
         <option value="$MODULE_DIR$/jcrsite/home/templates" />
-        <option value="$MODULE_DIR$/jcrsite/jcrsite/templates" />
-        <option value="$MODULE_DIR$/jcrsite/search/templates" />
-        <option value="$MODULE_DIR$/jcrsite/aidansadmintheme/templates" />
       </list>
     </option>
   </component>
