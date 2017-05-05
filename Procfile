@@ -1,1 +1,1 @@
-web: gunicorn jcrsite/jcrsite.wsgi
+web: gunicorn jcrsite.wsgi
