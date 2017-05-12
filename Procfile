@@ -1,1 +1,1 @@
-web: gunicorn jcrsite.wsgi
+web: gunicorn jcrsite/jcrsite.wsgi --log-file -
