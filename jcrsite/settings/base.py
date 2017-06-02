@@ -32,6 +32,7 @@ INSTALLED_APPS = [
     'jcrsite',
     'home',
     'search',
+    'forms',
     'aidansadmintheme', 
     'wagtail.wagtailforms',
     'wagtail.wagtailredirects',
