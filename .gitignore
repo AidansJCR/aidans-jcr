@@ -90,3 +90,5 @@ ENV/
 
 # databases
 *.db
+
+.idea/
