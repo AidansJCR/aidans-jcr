@@ -10,6 +10,18 @@ from wagtail.wagtailimages.edit_handlers import ImageChooserPanel
 from wagtail.wagtailsearch import index
 
 
+class GenericPage(Page):
+    subtitle = models.CharField(blank=True, max_length=250)
+    body = RichTextField(blank=True)
+
+    search_fields = Page.search_fields + [
+        index.SearchField('body')
+    ]
+
+    content_panels = Page.content_panels + [
+            FieldPanel('body', classname="full")
+     ]
+
 class HomePage(Page):
     body = RichTextField(blank=True)
 
