@@ -1,5 +1,6 @@
 from __future__ import absolute_import, unicode_literals
 
+from django.conf import settings
 from django.db import models
 from modelcluster.fields import ParentalKey
 from wagtail.wagtailadmin.edit_handlers import FieldPanel, InlinePanel
@@ -8,6 +9,22 @@ from wagtail.wagtailcore.fields import RichTextField
 from wagtail.wagtailcore.models import Page, Orderable
 from wagtail.wagtailimages.edit_handlers import ImageChooserPanel
 from wagtail.wagtailsearch import index
+
+
+class BlogPage(Page):
+    # owner can be obtained from the owner attribute (in Page).
+    body = RichTextField(blank=True)
+    feed_image = models.ForeignKey(
+        'wagtailimages.Image',
+        null=True,
+        blank=True,
+        on_delete=models.SET_NULL,
+        related_name='+'
+    )
+    content_panels = Page.content_panels + [
+        FieldPanel('body', classname="full"),
+        ImageChooserPanel('feed_image'),
+    ]
 
 
 class GenericPage(Page):
@@ -19,8 +36,9 @@ class GenericPage(Page):
     ]
 
     content_panels = Page.content_panels + [
-            FieldPanel('body', classname="full")
-     ]
+        FieldPanel('body', classname="full")
+    ]
+
 
 class HomePage(Page):
     body = RichTextField(blank=True)
