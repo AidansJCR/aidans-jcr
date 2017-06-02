@@ -6,8 +6,11 @@
 
 <div class="container page-container">
     <div class="userinfo">
-        <span>Published by:</span><span>{{page.owner.first_name}} {{page.owner.last_name}}</span>
-        <span>Published at:</span><span>{{page.first_published_at|date:"D d M Y"}}</span>
+        <p>Published by: {{page.owner}}</p>
+        <p>Published at: {{page.first_published_at|date:"D d M Y"}}</p>
+    </div>
+    <div class="float-right">
+        {% image page.feed_image width-300 %}
     </div>
     <div class="title-header">
         <h1 class="display1">{{page.title}}</h1>
