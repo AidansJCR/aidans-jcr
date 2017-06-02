@@ -1,0 +1,24 @@
+{% extends "base.html" %}
+{% load wagtailcore_tags wagtailimages_tags static %}
+{% block body_class %}template-generic{% endblock %}
+
+{% block content %}
+
+<div class="container page-container">
+    <div class="userinfo">
+        <p>Published by: {{page.owner}}</p>
+        <p>Published at: {{page.first_published_at|date:"D d M Y"}}</p>
+    </div>
+    <div class="float-right">
+        {% image page.feed_image width-300 %}
+    </div>
+    <div class="title-header">
+        <h1 class="display1">{{page.title}}</h1>
+    </div>
+    <p class="text">
+        {{ page.body|richtext}}
+    </p>
+
+</div>
+
+{% endblock %}
