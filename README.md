@@ -20,14 +20,18 @@ If you want to download a local copy of the website, simply clone the repository
 
 You might also need to install certain libraries for Linux, as found on the Getting Started with Wagtail page.
 
-## Implemented so far:
-+ Basic Aidan's backend theming
-+ CIS Authentication
+## Current Projects
+We are trying to replace the current site with this new one before the term is out. Therefore, we have a number of tasks we
+need to do:
 
-## Things to continue/start:
-+ Front End Design using Bootstrap
-+ Increase Aidan's backend theming
-+ Design page types for Django to use (with the theme).
-+ Start the Event Manager
-+ Link with Facebook
-+ Sort out deployment (Heroku/AWS/DigitalOcean/Linode)
+- Host images on AWS S3
+- Improve front page UI with new images from Summer events
+- Basic college info and photos (ready for freshers)
+
+We are also eventually going to work out a more permanent hosting situation, be that S3 and Heroku or a custom Docker image.
+
+This also needs to be the centre point for various other college features. We still need to build the Aidan's Dashboard,
+Shop ordering system (to replace the old one), Sports and Societies web area, and make the site itself actually nice for 
+potential new Technology Committee members next year.
+
+Oh, and if all else fails: fix JavaScript errors!
