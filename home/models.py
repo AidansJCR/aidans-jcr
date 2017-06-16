@@ -54,6 +54,38 @@ class HomePage(Page):
     ]
 
 
+class PeopleDirectoryPage(Page):
+    intro = RichTextField(blank=True)
+
+    search_fields = Page.search_fields + [
+        index.SearchField('intro')
+    ]
+
+    content_panels = Page.content_panels + [
+        FieldPanel('intro', classname='full'),
+        InlinePanel('people')
+    ]
+
+
+class PersonProfile(Orderable):
+    page = ParentalKey(PeopleDirectoryPage, related_name='people')
+    name = models.CharField(max_length=100)
+    email = models.EmailField()
+    rolename = models.CharField(max_length=100)
+    description = models.TextField()
+    image = models.ForeignKey(
+        'wagtailimages.Image', on_delete=models.CASCADE, related_name='+'
+    )
+
+    panels = [
+        FieldPanel('name'),
+        FieldPanel('email'),
+        ImageChooserPanel('image'),
+        FieldPanel('rolename'),
+        FieldPanel('description'),
+    ]
+
+
 class MainPageStaticCard(Orderable):
     page = ParentalKey(HomePage, related_name="main_cards")
     image = models.ForeignKey(
