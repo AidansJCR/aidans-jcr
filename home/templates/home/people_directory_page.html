@@ -4,19 +4,27 @@
 
 {% block content %}
 
-<div class="container page-container">
-    {% for card in page.people.all %}
-    <div class="card">
-        <h3 class="card-header">{{ card.rolename }}</h3>
-        <img class="card-img-top" src="..." alt="Card image cap">
-        <div class="card-block">
-            <h4 class="card-title">{{ card.name }}</h4>
-            <p class="card-text">{{card.description}}</p>
-            <a href="mailto://{{card.email}}" class="btn btn-primary">Email: {{ card.email }}</a>
-        </div>
-    </div>
-    {% endfor %}
 
+
+<div class="container page-container">
+    <div class="container">
+      <h1>{{page.title}}</h1>
+      <p>{{page.intro | richtext }}</p>
+    </div>
+
+    <div class="container-fluid">
+      {% for card in page.people.all %}
+      <div class="card">
+          <h3 class="card-header">{{ card.rolename }}</h3>
+          {% image card.image height-200 class="card-img-top" %}
+          <div class="card-block">
+              <h4 class="card-title">{{ card.name }}</h4>
+              <p class="card-text">{{card.description}}</p>
+              <a href="mailto://{{card.email}}" class="btn btn-primary">Email: {{ card.email }}</a>
+          </div>
+      </div>
+      {% endfor %}
+  </div>
 </div>
 
 {% endblock %}
