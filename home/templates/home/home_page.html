@@ -56,13 +56,16 @@
 <div class="container">
     <div class="row">
         {% for card in page.main_cards.all %}
-        <div class="card" style="width: 20rem;">
-            <div class="card-img-top">{% image card.image original %}</div>
-            <div class="card-block">
-                <h4 class="card-title">{{ card.card_title }}</h4>
-                <p class="card-text">{{card.label | richtext}}</p>
-            </div>
-        </div>
+
+            <figure class="snip1580">
+              {% image card.image width-200 %}
+              <figcaption>
+
+                  <h4>{{ card.card_title }}</h4>
+                  <p>{{card.label | richtext}}</p>
+                  <a href="{{ card.destination_page.url }}"></a>
+              </figcaption>
+            </figure>
         {% endfor %}
 
     </div>

@@ -3,7 +3,7 @@ from __future__ import absolute_import, unicode_literals
 from django.conf import settings
 from django.db import models
 from modelcluster.fields import ParentalKey
-from wagtail.wagtailadmin.edit_handlers import FieldPanel, InlinePanel
+from wagtail.wagtailadmin.edit_handlers import FieldPanel, InlinePanel, PageChooserPanel
 from wagtail.wagtailcore.fields import RichTextField
 
 from wagtail.wagtailcore.models import Page, Orderable
@@ -93,10 +93,18 @@ class MainPageStaticCard(Orderable):
     )
     card_title = models.CharField(blank=True, max_length=250)
     label = RichTextField(blank=True)
+    destination_page =  models.ForeignKey(
+        'wagtailcore.Page',
+        null=True,
+        blank=True,
+        on_delete=models.SET_NULL,
+        related_name='+',
+    )
     panels = [
         ImageChooserPanel('image'),
         FieldPanel('card_title'),
         FieldPanel('label'),
+        PageChooserPanel('destination_page'),
     ]
 
 
