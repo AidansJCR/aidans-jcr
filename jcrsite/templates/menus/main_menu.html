@@ -1,6 +1,4 @@
-{% load static navbar %}
-{% load wagtailcore_tags %}
-
+{% load menu_tags %}
 <nav class="navbar navbar-toggleable-md navbar-inverse bg-danger">
     <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarColor02" aria-controls="navbarColor02" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
@@ -9,12 +7,11 @@
 
     <div class="collapse navbar-collapse" id="navbarColor02">
       <ul class="navbar-nav mr-auto">
-        <li class="nav-item active">
-          <a class="nav-link" href="/">Home</a>
+        {% for item in menu_items %}
+        <li class="nav-item {{ item.active_class }}">
+          <a class="nav-link" href="{{ item.href }}">{{ item.text }}</a>
         </li>
-        <li class="nav-item">
-          <a class="nav-link" href="/about">About</a>
-        </li>
+        {% endfor %}
       </ul>
       <form class="form-inline">
         <input class="form-control mr-sm-2" type="text" placeholder="Search">

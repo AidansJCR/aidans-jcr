@@ -33,7 +33,7 @@ INSTALLED_APPS = [
     'home',
     'search',
     'forms',
-    'aidansadmintheme', 
+    'aidansadmintheme',
     'wagtail.wagtailforms',
     'wagtail.wagtailredirects',
     'wagtail.wagtailembeds',
@@ -45,9 +45,10 @@ INSTALLED_APPS = [
     'wagtail.wagtailsearch',
     'wagtail.wagtailadmin',
     'wagtail.wagtailcore',
-
+    'wagtail.contrib.modeladmin',
     'modelcluster',
     'taggit',
+    'wagtailmenus',
 
     'django.contrib.admin',
     'django.contrib.auth',
@@ -91,6 +92,8 @@ TEMPLATES = [
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
+                'wagtail.contrib.settings.context_processors.settings',
+                'wagtailmenus.context_processors.wagtailmenus'
             ],
         },
     },
@@ -154,4 +157,3 @@ BASE_URL = 'http://st-aidans.com'
 db_from_env = dj_database_url.config(conn_max_age=500)
 if db_from_env:
     DATABASES['default'].update(db_from_env)
-

@@ -22,6 +22,7 @@ requests==2.13.0
 rjsmin==1.0.12
 six==1.10.0
 Unidecode==0.4.20
-wagtail==1.8.1
+wagtail==1.11
+wagtailmenus==2.3.1
 whitenoise==3.3.0
 Willow==0.4
