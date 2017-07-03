@@ -33,6 +33,7 @@ INSTALLED_APPS = [
     'home',
     'search',
     'forms',
+    'gallery',
     'aidansadmintheme',
     'wagtail.wagtailforms',
     'wagtail.wagtailredirects',
