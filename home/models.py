@@ -66,7 +66,34 @@ class PeopleDirectoryPage(MenuPage):
         InlinePanel('people')
     ]
 
+class LinkPage(MenuPage):
+    intro = RichTextField(blank=True)
+    content_panels = Page.content_panels + [
+        FieldPanel('intro', classname='full'),
+        InlinePanel('links')
+    ]
 
+
+class PageLinks(Orderable):
+    page = ParentalKey(LinkPage, related_name='links')
+    name = models.CharField(max_length=100)
+    description = models.TextField()
+    image = models.ForeignKey(
+        'wagtailimages.Image', on_delete=models.CASCADE, related_name='+'
+    )
+    destination_page =  models.ForeignKey(
+        'wagtailcore.Page',
+        null=True,
+        blank=True,
+        on_delete=models.SET_NULL,
+        related_name='+',
+    )
+    panels = [
+        FieldPanel('name'),
+        FieldPanel('description'),
+        ImageChooserPanel('image'),
+        PageChooserPanel('destination_page')
+    ]
 class PersonProfile(Orderable):
     page = ParentalKey(PeopleDirectoryPage, related_name='people')
     name = models.CharField(max_length=100)
