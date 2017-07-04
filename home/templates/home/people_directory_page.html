@@ -1,14 +1,15 @@
 {% extends "base.html" %}
-{% load wagtailcore_tags wagtailimages_tags static %}
+{% load wagtailcore_tags wagtailimages_tags static menu_tags %}
 {% block body_class %}template-generic{% endblock %}
 
 {% block content %}
+
 <div class="container page-container">
+    {% section_menu max_levels=1%}
     <div class="container">
       <h1>{{page.title}}</h1>
       <p>{{page.intro | richtext }}</p>
     </div>
-
     <div class="container">
       {% for card in page.people.all %}
       <div class="row">

@@ -1,0 +1,13 @@
+asdfasdf
+{% if self.get_ancestors %}
+<ol class="breadcrumb">
+  {% for item in self.get_ancestors %}
+    <li class="breadcrumb-item">
+      <a href="{{ pageurl item }}">{{ item.title }}</a>
+    </li>
+  {% endfor %}
+  <li class="breadcrumb-item active">
+    {{ self.title }}
+  </li>
+</ol>
+{% endif %}

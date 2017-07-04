@@ -5,13 +5,13 @@ from django.db import models
 from modelcluster.fields import ParentalKey
 from wagtail.wagtailadmin.edit_handlers import FieldPanel, InlinePanel, PageChooserPanel
 from wagtail.wagtailcore.fields import RichTextField
-
+from wagtailmenus.models import MenuPage
 from wagtail.wagtailcore.models import Page, Orderable
 from wagtail.wagtailimages.edit_handlers import ImageChooserPanel
 from wagtail.wagtailsearch import index
 
 
-class BlogPage(Page):
+class BlogPage(MenuPage):
     # owner can be obtained from the owner attribute (in Page).
     body = RichTextField(blank=True)
     feed_image = models.ForeignKey(
@@ -27,7 +27,7 @@ class BlogPage(Page):
     ]
 
 
-class GenericPage(Page):
+class GenericPage(MenuPage):
     subtitle = models.CharField(blank=True, max_length=250)
     body = RichTextField(blank=True)
 
@@ -40,7 +40,7 @@ class GenericPage(Page):
     ]
 
 
-class HomePage(Page):
+class HomePage(MenuPage):
     body = RichTextField(blank=True)
 
     search_fields = Page.search_fields + [
@@ -54,7 +54,7 @@ class HomePage(Page):
     ]
 
 
-class PeopleDirectoryPage(Page):
+class PeopleDirectoryPage(MenuPage):
     intro = RichTextField(blank=True)
 
     search_fields = Page.search_fields + [

@@ -1,9 +1,10 @@
 {% extends "base.html" %}
-{% load wagtailcore_tags wagtailimages_tags static %}
+{% load wagtailcore_tags wagtailimages_tags static menu_tags %}
 {% block body_class %}template-generic{% endblock %}
 
 {% block content %}
 <div class="container page-container">
+      {% section_menu %}
     <div class="title-header">
         <h1 class="display1">{{page.title}}</h1>
         <h2 class="subtitle">{{page.subtitle}}</h2>

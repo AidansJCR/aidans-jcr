@@ -106,3 +106,22 @@ footer {
 .snip1580.hover p {
   color: #333;
 }
+
+
+.photo:hover {
+  -webkit-transform: scale(1.02);
+  -ms-transform: scale(1.02);
+  transform: scale(1.02);
+}
+
+.photos {
+  border: 5px solid lightgreen;
+  padding: 1rem;
+  margin: 5px;
+  background-color: #f9bdbd;
+}
+
+.title-header {
+  padding-top: 10px;
+  padding-bottom: 50px;
+}
