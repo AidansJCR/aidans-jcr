@@ -1,0 +1,12 @@
+{% load wagtailcore_tags %}
+{% if self.get_ancestors|length > 1 %}
+<ol class="breadcrumb">
+    {% for page in self.get_ancestors %}
+      {% if page.is_root == False %}
+    <li class="breadcrumb-item">
+      <a href="{% pageurl page %}">{{ page.title }}</a>
+    </li>
+      {% endif %}
+  {% endfor %}
+</ol>
+{% endif %}

@@ -1,0 +1,13 @@
+/*html,body{height:100%;}*/
+/*!*.carousel,.item,.active{height:100%;}*!*/
+/*.carousel-inner{height:100%;}*/
+
+.footer {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  /* Set the fixed height of the footer here */
+  height: 60px;
+  line-height: 300px; /* Vertically center the text there */
+  background-color: #f5f5f5;
+}

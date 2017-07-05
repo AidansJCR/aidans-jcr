@@ -73,7 +73,34 @@ class LinkPage(MenuPage):
         InlinePanel('links')
     ]
 
+class ClubPage(MenuPage):
+    intro = RichTextField(blank=True)
+    content_panels = Page.content_panels + [
+        FieldPanel('intro', classname='full'),
+        InlinePanel('club')
+    ]
 
+
+class Club(Orderable):
+    page = ParentalKey(ClubPage, related_name='club')
+    name = models.CharField(max_length=200)
+    description = RichTextField()
+    leader = models.CharField(max_length=100)
+    image = models.ForeignKey(
+        'wagtailimages.Image', on_delete=models.CASCADE, related_name="+"
+    )
+    facebook_link = models.URLField(blank=True)
+    email_address = models.EmailField(blank=True)
+    twitter_link = models.URLField(blank=True)
+    panels = [
+        FieldPanel('name'),
+        FieldPanel('description'),
+        FieldPanel('leader'),
+        ImageChooserPanel('image'),
+        FieldPanel('facebook_link'),
+        FieldPanel('email_address'),
+        FieldPanel('twitter_link')
+    ]
 class PageLinks(Orderable):
     page = ParentalKey(LinkPage, related_name='links')
     name = models.CharField(max_length=100)
