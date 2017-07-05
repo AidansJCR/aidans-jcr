@@ -5,6 +5,7 @@
 {% block content %}
 
 <div class="container page-container">
+    {% include "breadcrumbs.html" %}
     <div class="userinfo">
         <p>Published by: {{page.owner}}</p>
         <p>Published at: {{page.first_published_at|date:"D d M Y"}}</p>
