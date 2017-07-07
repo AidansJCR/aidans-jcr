@@ -1,0 +1,32 @@
+{% extends "base.html" %}
+{% load wagtailcore_tags wagtailimages_tags static %}
+{% block body_class %}template-blog{% endblock %}
+
+{% block content %}
+<div class="container page-container">
+    {% include "breadcrumbs.html" %}
+    <h1>{{ page.title }}</h1>
+    <p>{{ page.intro |richtext}}</p>
+</div>
+<div class="container">
+{% for blogpost in blog_posts %}
+    <figure class="snip1529">
+      <!-- Note the specific here: this gets an instance of BlogPage, rather than just Page
+           You have to use specific in order to get the non-abstract value.
+           Therefore, specific is needed to fetch all the Blog page specific data like image.
+    -->
+        {% image blogpost.specific.feed_image height-200 %}
+        <div class="date">
+              <span class="day">{{blogpost.first_published_at|date:"d"}}</span>
+              <span class="month">{{blogpost.first_published_at|date:"M"}}</span>
+          </div>
+          <figcaption>
+              <h4>{{ blogpost.title }}</h4>
+              <p>{{blogpost.search_description}}</p>
+              <a href="{% pageurl blogpost %}"></a>
+          </figcaption>
+        </figure>
+    {% endfor %}
+    </div>
+
+{% endblock %}

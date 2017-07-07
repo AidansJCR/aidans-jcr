@@ -2,6 +2,7 @@ from __future__ import absolute_import, unicode_literals
 
 from django.conf import settings
 from django.db import models
+from django.contrib.auth.models import User
 from modelcluster.fields import ParentalKey
 from wagtail.wagtailadmin.edit_handlers import FieldPanel, InlinePanel, PageChooserPanel
 from wagtail.wagtailcore.fields import RichTextField
@@ -25,7 +26,14 @@ class BlogPage(MenuPage):
         FieldPanel('body', classname="full"),
         ImageChooserPanel('feed_image'),
     ]
+    def get_context(self, request):
+        context = super(BlogPage, self).get_context(request)
 
+        # Get the full name if it exists, otherwise use the username
+        owner_username = self.owner
+        user = User.objects.filter(username=owner_username).first()
+        context['owner_fullname'] = user.get_full_name()
+        return context
 
 class GenericPage(MenuPage):
     subtitle = models.CharField(blank=True, max_length=250)
@@ -42,7 +50,7 @@ class GenericPage(MenuPage):
 
 class HomePage(MenuPage):
     body = RichTextField(blank=True)
-
+    show_blog_posts = models.BooleanField()
     search_fields = Page.search_fields + [
         index.SearchField('body')
     ]
@@ -50,9 +58,37 @@ class HomePage(MenuPage):
     content_panels = Page.content_panels + [
         FieldPanel('body', classname="full"),
         InlinePanel('gallery_images', label="Gallery Images"),  # the carousel on the page
-        InlinePanel('main_cards', label="Card Views")
+        InlinePanel('main_cards', label="Card Views"),
+        FieldPanel('show_blog_posts')
+    ]
+    def get_context(self, request):
+        context = super(HomePage, self).get_context(request)
+
+        # TODO: Allow the user to customise the number
+        # TODO: allow filter by category, such as news tags.
+        # Now get the recent blog posts
+        blog_posts = BlogPage.objects.live().public()
+        blog_posts = blog_posts.order_by('-first_published_at')[:5]
+        context['blog_posts'] = blog_posts
+
+        #return the context
+        return context
+
+class BlogIndexPage(MenuPage):
+    intro = RichTextField(blank=True)
+    content_panels = Page.content_panels + [
+        FieldPanel('intro', classname="full"),
     ]
 
+    def get_context(self, request):
+        context = super(BlogIndexPage, self).get_context(request)
+
+        # Get all the Blog Posts that are made under this index page.
+        blog_posts = self.get_children().live().public().type(BlogPage)
+
+        # Send them to the page template as {{ blog_posts }}.
+        context['blog_posts'] = blog_posts
+        return context
 
 class PeopleDirectoryPage(MenuPage):
     intro = RichTextField(blank=True)
