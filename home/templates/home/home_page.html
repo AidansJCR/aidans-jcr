@@ -82,8 +82,12 @@
 
         {% for blogpost in blog_posts.all %}
 
-            <figure class="snip1580">
+            <figure class="snip1529">
               {% image blogpost.feed_image height-200 %}
+              <div class="date">
+                  <span class="day">{{blogpost.first_published_at|date:"d"}}</span>
+                  <span class="month">{{blogpost.first_published_at|date:"M"}}</span>
+              </div>
               <figcaption>
 
                   <h4>{{ blogpost.title }}</h4>

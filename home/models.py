@@ -68,6 +68,7 @@ class HomePage(MenuPage):
         # TODO: allow filter by category, such as news tags.
         # Now get the recent blog posts
         blog_posts = BlogPage.objects.live().public()
+        blog_posts = blog_posts.order_by('-first_published_at')[:5]
         context['blog_posts'] = blog_posts
 
         #return the context
