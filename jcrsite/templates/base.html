@@ -17,15 +17,6 @@
         </title>
         <meta name="description" content="" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
-
-        {# Global stylesheets #}
-        <link rel="stylesheet" type="text/css" href="{% static 'css/jcrsite.css' %}">
-        <!-- Latest compiled and minified CSS -->
-       <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css" integrity="sha384-rwoIResjU2yc3z8GV/NPeZWAv56rSmLldC3R/AZzGRnGxQQKnKkoFVhFQhNUwEyJ" crossorigin="anonymous">
-
-       {% block extra_css %}
-            {# Override this in templates to add extra stylesheets #}
-        {% endblock %}
     </head>
     <body class="{% block body_class %}{% endblock %}">
         {% wagtailuserbar %}
@@ -35,6 +26,17 @@
         {% block content %}
         {% endblock %}
         {% include 'footer.html' %}
+
+
+        {# Global stylesheets #}
+        <link rel="stylesheet" type="text/css" href="{% static 'css/jcrsite.css' %}">
+        <!-- Latest compiled and minified CSS -->
+       <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css" integrity="sha384-rwoIResjU2yc3z8GV/NPeZWAv56rSmLldC3R/AZzGRnGxQQKnKkoFVhFQhNUwEyJ" crossorigin="anonymous">
+
+       {% block extra_css %}
+            {# Override this in templates to add extra stylesheets #}
+        {% endblock %}
+        
         {# Global javascript #}
         <script
             src="https://code.jquery.com/jquery-3.2.0.min.js"
