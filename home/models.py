@@ -2,6 +2,7 @@ from __future__ import absolute_import, unicode_literals
 
 from django.conf import settings
 from django.db import models
+from django.contrib.auth.models import User
 from modelcluster.fields import ParentalKey
 from wagtail.wagtailadmin.edit_handlers import FieldPanel, InlinePanel, PageChooserPanel
 from wagtail.wagtailcore.fields import RichTextField
@@ -25,7 +26,14 @@ class BlogPage(MenuPage):
         FieldPanel('body', classname="full"),
         ImageChooserPanel('feed_image'),
     ]
+    def get_context(self, request):
+        context = super(BlogPage, self).get_context(request)
 
+        # Get the full name if it exists, otherwise use the username
+        owner_username = self.owner
+        user = User.objects.filter(username=owner_username).first()
+        context['owner_fullname'] = user.get_full_name()
+        return context
 
 class GenericPage(MenuPage):
     subtitle = models.CharField(blank=True, max_length=250)
