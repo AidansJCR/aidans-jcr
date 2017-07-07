@@ -74,6 +74,22 @@ class HomePage(MenuPage):
         #return the context
         return context
 
+class BlogIndexPage(MenuPage):
+    intro = RichTextField(blank=True)
+    content_panels = Page.content_panels + [
+        FieldPanel('intro', classname="full"),
+    ]
+
+
+
+    def get_context(self, request):
+        context = super(BlogIndexPage, self).get_context(request)
+
+        blog_posts = self.get_children().live().public().type(BlogPage)
+        context['blog_posts'] = blog_posts
+        print(blog_posts)
+        return context
+
 class PeopleDirectoryPage(MenuPage):
     intro = RichTextField(blank=True)
 

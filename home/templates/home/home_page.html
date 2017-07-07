@@ -92,7 +92,7 @@
 
                   <h4>{{ blogpost.title }}</h4>
                   <p>{{blogpost.search_description | richtext}}</p>
-                  <a href=""></a>
+                  <a href="{% pageurl blogpost %}"></a>
               </figcaption>
             </figure>
         {% endfor %}
