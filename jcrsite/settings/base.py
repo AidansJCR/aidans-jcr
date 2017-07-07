@@ -169,6 +169,10 @@ if db_from_env:
     AWS_S3_OBJECT_PARAMETERS = {
         'CacheControl': 'max-age=86400',
     }
+    AWS_QUERYSTRING_AUTH = False
+    AWS_HEADERS = {
+        'Cache-Control': 'max-age=86400',
+    }
     # SendGrid
     EMAIL_BACKEND = "sgbackend.SendGridBackend"
     SENDGRID_API_KEY = os.environ['SENDGRID_API_KEY']
