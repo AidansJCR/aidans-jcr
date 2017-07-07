@@ -80,11 +80,13 @@ class BlogIndexPage(MenuPage):
         FieldPanel('intro', classname="full"),
     ]
 
-
-
     def get_context(self, request):
         context = super(BlogIndexPage, self).get_context(request)
+
+        # Get all the Blog Posts that are made under this index page.
         blog_posts = self.get_children().live().public().type(BlogPage)
+
+        # Send them to the page template as {{ blog_posts }}.
         context['blog_posts'] = blog_posts
         return context
 
