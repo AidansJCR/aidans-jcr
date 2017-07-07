@@ -50,7 +50,7 @@ class GenericPage(MenuPage):
 
 class HomePage(MenuPage):
     body = RichTextField(blank=True)
-
+    show_blog_posts = models.BooleanField()
     search_fields = Page.search_fields + [
         index.SearchField('body')
     ]
@@ -58,9 +58,20 @@ class HomePage(MenuPage):
     content_panels = Page.content_panels + [
         FieldPanel('body', classname="full"),
         InlinePanel('gallery_images', label="Gallery Images"),  # the carousel on the page
-        InlinePanel('main_cards', label="Card Views")
+        InlinePanel('main_cards', label="Card Views"),
+        FieldPanel('show_blog_posts')
     ]
+    def get_context(self, request):
+        context = super(HomePage, self).get_context(request)
 
+        # TODO: Allow the user to customise the number
+        # TODO: allow filter by category, such as news tags.
+        # Now get the recent blog posts
+        blog_posts = BlogPage.objects.live().public()
+        context['blog_posts'] = blog_posts
+
+        #return the context
+        return context
 
 class PeopleDirectoryPage(MenuPage):
     intro = RichTextField(blank=True)
