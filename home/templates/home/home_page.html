@@ -2,7 +2,7 @@
 {% load wagtailcore_tags wagtailimages_tags static %}
 {% block body_class %}template-homepage{% endblock %}
 {% block extra_css %}
-<link rel="stylesheet" href="{% static 'css/bunting.css' %}">
+<link rel="stylesheet" href="{% static 'css/bunting.css' %}" async>
 {% endblock %}
 {% block content %}
 
@@ -104,7 +104,7 @@
 {% endblock %}
 
 {% block extra_js %}
-<script src="{% static 'js/isotope.pkgd.min.js' %}"></script>
-<script src="{% static 'js/homepage.js' %}"></script>
-<script src="{% static 'js/bunting.js' %}"></script>
+<script src="{% static 'js/isotope.pkgd.min.js' %}" defer></script>
+<script src="{% static 'js/homepage.js' %}" defer></script>
+<script src="{% static 'js/bunting.js' %}" defer></script>
 {% endblock %}

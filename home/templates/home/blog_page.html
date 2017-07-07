@@ -3,8 +3,8 @@
 {% block body_class %}template-blog{% endblock %}
 
 {% block content %}
-
-<div class="container page-container">
+<div class="page-container">
+<div class="container">
     {% include "breadcrumbs.html" %}
     <div class="userinfo">
         <p>Published by: {{owner_fullname}}</p>
@@ -21,5 +21,18 @@
     </p>
 
 </div>
-
+<div class="container">
+  <hr>
+  <div class="row">
+    <h4>Share this with friends</h4>
+  </div>
+  <div class="row">
+  <!-- Twitter Share Button -->
+  <a href="https://twitter.com/share" class="twitter-share-button"
+     data-show-count="false">Tweet</a>
+  <script async src="//platform.twitter.com/widgets.js" charset="utf-8">
+  </script>
+</div>
+</div>
+</div>
 {% endblock %}
