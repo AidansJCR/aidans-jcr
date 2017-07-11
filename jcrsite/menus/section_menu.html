@@ -1,8 +1,0 @@
-{% load menu_tags %}
-<ol class="breadcrumb">
-  {% for item in menu_items %}
-    <li class="breadcrumb-item {{ item.active_class }}">
-      <a href="{{ item.href }}">{{ item.text }}</a>
-    </li>
-  {% endfor %}
-</ol>

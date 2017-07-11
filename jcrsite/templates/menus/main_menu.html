@@ -1,9 +1,9 @@
-{% load menu_tags %}
+{% load menu_tags static %}
 <nav class="navbar navbar-toggleable-md navbar-inverse bg-danger">
     <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarColor02" aria-controls="navbarColor02" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
-    <a class="navbar-brand" href="/">Aidan's JCR</a>
+    <a class="navbar-brand" href="/"><img src="{% static 'images/badger-logo.png'%}" class="d-inline-block" /><span class="h2">Aidan's JCR</span></a>
 
     <div class="collapse navbar-collapse" id="navbarColor02">
       <ul class="navbar-nav mr-auto">
