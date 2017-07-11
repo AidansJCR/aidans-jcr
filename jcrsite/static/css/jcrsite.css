@@ -23,6 +23,15 @@ footer {
   text-align: center;
 }
 
+
+.carousel-img-custom {
+  height: auto !important;
+  max-height: auto;
+  width: 100%;
+  
+}
+
+
 /* Custom page CSS
 -------------------------------------------------- */
 /* Not required for template or sticky footer method. */
