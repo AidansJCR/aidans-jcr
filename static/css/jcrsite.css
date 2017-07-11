@@ -28,10 +28,12 @@ footer {
   height: auto !important;
   max-height: auto;
   width: 100%;
-  
+
 }
 
-
+.navbar-title-text {
+  padding-left: 3px;
+}
 /* Custom page CSS
 -------------------------------------------------- */
 /* Not required for template or sticky footer method. */

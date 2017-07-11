@@ -1,0 +1,13 @@
+{
+    "name": "St Aidan's JCR",
+    "icons": [
+        {
+            "src": "/android-chrome-72x72.png",
+            "sizes": "72x72",
+            "type": "image/png"
+        }
+    ],
+    "theme_color": "#ff2211",
+    "background_color": "#ff2211",
+    "display": "standalone"
+}

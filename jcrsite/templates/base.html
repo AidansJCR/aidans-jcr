@@ -5,6 +5,12 @@
     <head>
         <meta charset="utf-8" />
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <link rel="apple-touch-icon" sizes="76x76" href="{% static 'favicons/apple-touch-icon.png' %}">
+        <link rel="icon" type="image/png" sizes="32x32" href="{% static 'favicons/favicon-32x32.png' %}">
+        <link rel="icon" type="image/png" sizes="16x16" href="{% static 'favicons/favicon-16x16.png' %}">
+        <link rel="manifest" href="{% static 'favicons/manifest.json' %}">
+        <link rel="mask-icon" href="{% static 'favicons/safari-pinned-tab.svg' %}" color="#85969c">
+        <meta name="theme-color" content="#ff2211">
         <title>
             {% block title %}
                 {% if self.seo_title %}{{ self.seo_title }}{% else %}{{ self.title }}{% endif %}
