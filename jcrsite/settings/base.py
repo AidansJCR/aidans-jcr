@@ -155,7 +155,7 @@ WAGTAIL_SITE_NAME = "St Aidan's JCR"
 WAGTAIL_FRONTEND_LOGIN_TEMPLATE = "password_required.html"
 # Base URL to use when referring to full URLs within the Wagtail admin backend -
 # e.g. in notification emails. Don't include '/admin' or a trailing slash
-BASE_URL = 'http://st-aidans.com'
+BASE_URL = 'https://st-aidans.com'
 
 db_from_env = dj_database_url.config(conn_max_age=500)
 if db_from_env:
