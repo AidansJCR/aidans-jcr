@@ -21,9 +21,9 @@
     <!-- Wrapper for slides -->
     <div class="carousel-inner" role="listbox">
         {% for item in page.gallery_images.all %}
-        <div class="carousel-item d-block {% if item.primary %}active{% endif %}">
-            {% image item.image original class="img-fluid"%}
-            <div class="carousel-caption">
+        <div class="carousel-item {% if item.primary %}active{% endif %}">
+            {% image item.image original class="d-sm-block d-flex img-fluid"%}
+            <div class="carousel-caption d-none d-md-block">
                 {% if item.title %}
                 <h3>{{ item.title }}</h3>
                 {% endif %}
