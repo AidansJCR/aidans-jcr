@@ -22,7 +22,7 @@
     <div class="carousel-inner" role="listbox">
         {% for item in page.gallery_images.all %}
         <div class="carousel-item {% if item.primary %}active{% endif %}">
-            {% image item.image original%}
+            {% image item.image original class="img-fluid"%}
             <div class="carousel-caption">
                 {% if item.title %}
                 <h3>{{ item.title }}</h3>
