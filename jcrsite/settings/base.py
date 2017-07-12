@@ -170,6 +170,9 @@ if db_from_env:
     AWS_S3_OBJECT_PARAMETERS = {
         'CacheControl': 'max-age=86400',
     }
+    AWS_S3_BUCKET_AUTH = False
+
+    AWS_S3_MAX_AGE_SECONDS = 60 * 60 * 4  # 4 hours
     AWS_QUERYSTRING_AUTH = False
     AWS_HEADERS = {
         'Cache-Control': 'max-age=86400',
