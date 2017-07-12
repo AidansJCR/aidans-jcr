@@ -1,1 +1,1 @@
-web: gunicorn --pythonpath jcrsite/ jcrsite.wsgi --log-file -
+web: gunicorn --worker-class gevent --pythonpath jcrsite/ jcrsite.wsgi --log-file -
