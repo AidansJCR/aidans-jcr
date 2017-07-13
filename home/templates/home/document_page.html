@@ -1,0 +1,28 @@
+{% extends "base.html" %}
+{% load wagtailcore_tags wagtailimages_tags static menu_tags %}
+{% block body_class %}template-generic{% endblock %}
+
+{% block content %}
+<div class="container page-container">
+      {% include "breadcrumbs.html" %}
+      <h1>{{ page.title }}</h1>
+      <p>
+         Click the links to download the document.
+      </p>
+      {% for block in page.section_blocks %}
+
+        {% if block.block_type == "heading" %}
+          <h2 style="margin-bottom: 20px">{% include_block block %}</h2>
+
+        {% endif %}
+        {% if block.block_type == "document" %}
+          <div class="d-flex" style="background-color: lightgrey; margin-bottom: 20px; padding-left: 20px;padding-bottom: 20px; padding-top: 10px;">
+            {% include_block block %}
+          </div>
+        {% endif %}
+
+
+
+      {% endfor %}
+</div>
+{% endblock %}

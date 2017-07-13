@@ -4,13 +4,14 @@ from django.conf import settings
 from django.db import models
 from django.contrib.auth.models import User
 from modelcluster.fields import ParentalKey
-from wagtail.wagtailadmin.edit_handlers import FieldPanel, InlinePanel, PageChooserPanel
-from wagtail.wagtailcore.fields import RichTextField
+from wagtail.wagtailadmin.edit_handlers import FieldPanel, InlinePanel, PageChooserPanel, StreamFieldPanel
+from wagtail.wagtailcore.fields import RichTextField, StreamField
+from wagtail.wagtailcore import blocks
 from wagtailmenus.models import MenuPage
 from wagtail.wagtailcore.models import Page, Orderable
 from wagtail.wagtailimages.edit_handlers import ImageChooserPanel
 from wagtail.wagtailsearch import index
-
+from wagtail.wagtaildocs.blocks import DocumentChooserBlock
 
 class BlogPage(MenuPage):
     # owner can be obtained from the owner attribute (in Page).
@@ -115,6 +116,19 @@ class ClubPage(MenuPage):
         FieldPanel('intro', classname='full'),
         InlinePanel('club')
     ]
+
+class DocumentPage(MenuPage):
+    intro = RichTextField();
+    section_blocks = StreamField([
+        ('heading', blocks.CharBlock(classname="Section Title")),
+        ('document', DocumentChooserBlock())
+    ])
+
+    content_panels = Page.content_panels + [
+        FieldPanel('intro'),
+        StreamFieldPanel('section_blocks')
+    ]
+
 
 
 class Club(Orderable):
