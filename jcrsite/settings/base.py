@@ -20,8 +20,9 @@ import dj_database_url
 PROJECT_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 BASE_DIR = os.path.dirname(PROJECT_DIR)
 
+# Set up the login redirects, and also set wagtail to use our main login system (Django based one)
 LOGIN_REDIRECT_URL = '/'
-WAGTAIL_FRONTEND_LOGIN_URL = LOGIN_URL
+WAGTAIL_FRONTEND_LOGIN_URL = '/login/'
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/1.10/howto/deployment/checklist/
