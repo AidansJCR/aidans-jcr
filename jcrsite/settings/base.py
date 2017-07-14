@@ -162,6 +162,9 @@ WAGTAIL_FRONTEND_LOGIN_TEMPLATE = "password_required.html"
 # e.g. in notification emails. Don't include '/admin' or a trailing slash
 BASE_URL = 'https://st-aidans.com'
 
+# Email Address to send emails from
+DEFAULT_FROM_EMAIL = 'no-reply@st-aidans.com'
+
 db_from_env = dj_database_url.config(conn_max_age=500)
 if db_from_env:
     DATABASES['default'].update(db_from_env)
