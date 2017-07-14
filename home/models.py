@@ -27,6 +27,9 @@ class BlogPage(MenuPage):
         FieldPanel('body', classname="full"),
         ImageChooserPanel('feed_image'),
     ]
+    search_fields = Page.search_fields + [
+        index.SearchField('body')
+    ]
     def get_context(self, request):
         context = super(BlogPage, self).get_context(request)
 
@@ -41,7 +44,7 @@ class GenericPage(MenuPage):
     body = RichTextField(blank=True)
 
     search_fields = Page.search_fields + [
-        index.SearchField('body')
+        index.SearchField('body'),
     ]
 
     content_panels = Page.content_panels + [
