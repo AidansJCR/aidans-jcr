@@ -180,6 +180,7 @@ class PersonProfile(Orderable):
     email = models.EmailField()
     rolename = models.CharField(max_length=100)
     description = models.TextField()
+    facebook_link = models.URLField(blank=True)
     image = models.ForeignKey(
         'wagtailimages.Image', on_delete=models.CASCADE, related_name='+'
     )
@@ -190,6 +191,7 @@ class PersonProfile(Orderable):
         ImageChooserPanel('image'),
         FieldPanel('rolename'),
         FieldPanel('description'),
+        FieldPanel('facebook_link'),
     ]
 
 

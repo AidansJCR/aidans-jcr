@@ -19,7 +19,10 @@
         <div class="p-2">
             <h3 class="">{{ card.rolename }}: {{ card.name }}</h3>
             <p class="">{{card.description}}</p>
-            <!-- <a href="mailto://{{card.email}}" class="btn btn-primary">Email</a> -->
+            <a href="mailto://{{card.email}}" class="btn btn-primary">Email: {{ card.email }}</a>
+            {% if card.facebook_link %}
+            <a href="{{card.facebook_link}}" class="btn btn-info">Facebook</a>
+            {% endif %}
         </div>
       </div>
       {% endfor %}
