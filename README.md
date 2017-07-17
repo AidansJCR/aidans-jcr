@@ -1,5 +1,5 @@
 # Aidan's JCR Website
-[![Build Status](https://travis-ci.org/OhmGeek/aidans-jcr.svg?branch=master)](https://travis-ci.org/OhmGeek/aidans-jcr)
+[![Build Status](https://travis-ci.org/AidansJCR/aidans-jcr.svg?branch=master)](https://travis-ci.org/AidansJCR/aidans-jcr)
 ## Introduction
 This is the start of something new... the creation of a website designed BY students, FOR students. Rather than being a site dedicated entirely to selling the college to external students, it should provide a balance between selling the college and helping the college members settle in, making their lives that little bit easier.
 
