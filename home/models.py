@@ -30,6 +30,9 @@ class BlogPage(MenuPage):
     search_fields = Page.search_fields + [
         index.SearchField('body')
     ]
+    parent_page_types = ['home.BlogIndexPage']
+    subpage_types = []
+
     def get_context(self, request):
         context = super(BlogPage, self).get_context(request)
 
@@ -38,6 +41,7 @@ class BlogPage(MenuPage):
         user = User.objects.filter(username=owner_username).first()
         context['owner_fullname'] = user.get_full_name()
         return context
+
 
 class GenericPage(MenuPage):
     subtitle = models.CharField(blank=True, max_length=250)
@@ -84,6 +88,7 @@ class BlogIndexPage(MenuPage):
         FieldPanel('intro', classname="full"),
     ]
 
+    subpage_types = ['home.BlogPage']
     def get_context(self, request):
         context = super(BlogIndexPage, self).get_context(request)
 
