@@ -38,6 +38,7 @@ INSTALLED_APPS = [
     'forms',
     'gallery',
     'aidansadmintheme',
+    'formalsbooking',
     'wagtail.wagtailforms',
     'wagtail.wagtailredirects',
     'wagtail.wagtailembeds',
