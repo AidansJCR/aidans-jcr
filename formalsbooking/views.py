@@ -19,6 +19,7 @@ def new_booking(request):
             booking = form.save(commit=False)
             booking.user = request.user
 
+            # now save the booking, rendering an error if one occurs.
             try:
                 booking.save()
             except IntegrityError as e1:
@@ -27,7 +28,7 @@ def new_booking(request):
             except Exception as e2:
                 return render(request, 'formalsbooking/new_booking.html', {'form': form, 'error': e2 })
         else:
-            pass # todo error
+            return render(request, 'formalsbooking/new_booking.html', {'form': form, 'error': "The form is invalid. Please ensure all required fields are filled in." })
 
     # Otherwise, show the user a new form.
     form = BookingForm()
