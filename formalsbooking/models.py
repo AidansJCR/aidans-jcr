@@ -14,7 +14,12 @@ class Event(models.Model):
         return self.name
 
 class Group(models.Model):
-    pass
+    """
+        This represents a group of people. It's just an ID for now, but we
+        will store the date of creation eventually.
+    """
+    def __str__(self):
+        return str(self.pk)
 
 class Booking(models.Model):
     """
