@@ -19,7 +19,7 @@ class Group(models.Model):
         will store the date of creation eventually.
     """
     def __str__(self):
-        return str(self.pk)
+        return "Group " + str(self.pk)
 
 class Booking(models.Model):
     """
@@ -31,3 +31,8 @@ class Booking(models.Model):
     group = models.ForeignKey(Group)
     dietary_requirements = models.TextField(blank=True)
     wine_choice = models.CharField(max_length=50, blank=True)
+
+    # User and Event tuples must be unique
+    # (therefore, one user booking per event)
+    class Meta:
+        unique_together = ('user', 'event',)
