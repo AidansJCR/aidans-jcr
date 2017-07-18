@@ -8,4 +8,4 @@ class BookingForm(forms.ModelForm):
     """
     class Meta:
         model = Booking
-        fields = ['event', 'group', 'dietary_requirements', 'wine_choice']
+        fields = ['event', 'dietary_requirements', 'wine_choice']

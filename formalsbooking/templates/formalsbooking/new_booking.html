@@ -18,8 +18,28 @@
          {% csrf_token %}
          <table class="table">
          {{ form }}
+         <tr>
+           <td>
+             <b>Group</b>
+           </td>
+           <td>
+
+             <label class="form-check-label">
+               <input type="radio" class="form-check-input" name="optionsRadios" id="new-group-id-btn" value="New Group ID" checked />
+               Create New Group
+             </label>
+             <label class="form-check-label">
+               <input type="radio" class="form-check-input" name="optionsRadios" id="existing-group-id-btn" value="Existing Group ID"/>
+               Use Existing Group
+             </label>
+           </td>
+         </tr>
+         <tr id="group-settings"></tr>
          </table>
          <input type="submit" class="btn btn-primary" value="Submit" />
   </form>
 </div>
+{% endblock %}
+{% block extra_js %}
+<script src="{% static 'js/formals-booking.js' %}" defer></script>
 {% endblock %}
