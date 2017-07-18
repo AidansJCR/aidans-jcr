@@ -21,16 +21,25 @@ class Group(models.Model):
     def __str__(self):
         return "Group " + str(self.pk)
 
+
+
 class Booking(models.Model):
     """
         This is an individual booking for a specific event, by a specific user,
         who in turn is attached to a specific group.
     """
+    AVAILABLE_WINE_CHOICES = (
+        ("NONE", "None"),
+        ("RED", "Red"),
+        ("WHITE", "White")
+    )
+
     event = models.ForeignKey(Event, on_delete=models.CASCADE)
     user = models.ForeignKey(User)
     group = models.ForeignKey(Group)
     dietary_requirements = models.TextField(blank=True)
-    wine_choice = models.CharField(max_length=50, blank=True)
+    wine_choice = models.CharField(max_length=50, blank=True, choices=AVAILABLE_WINE_CHOICES, default="NONE")
+
 
     # User and Event tuples must be unique
     # (therefore, one user booking per event)
