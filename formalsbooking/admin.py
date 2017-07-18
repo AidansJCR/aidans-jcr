@@ -1,7 +1,7 @@
 from django.contrib import admin
 from .models import Event, Booking, Group
 
-# Register your models here.
+# Django Admin
 class EventAdmin(admin.ModelAdmin):
     pass
 
