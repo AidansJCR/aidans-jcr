@@ -1,9 +1,9 @@
-from wagtail.contrib.modeladmin.options import (ModelAdmin, modeladmin_register)
+from wagtail.contrib.modeladmin.options import (ModelAdmin, ModelAdminGroup, modeladmin_register)
 from .models import Booking, Event
 
 class WagtailBookingAdmin(ModelAdmin):
     model = Booking
-    menu_label = 'Formals'
+    menu_label = 'Bookings'
     menu_icon = 'tick'
     menu_order = 500
     add_to_settings_menu = False
@@ -20,5 +20,10 @@ class WagtailEventAdmin(ModelAdmin):
     list_display = ('name', 'description', 'time',)
     search_fields = ('name',)
 
-modeladmin_register(WagtailBookingAdmin)
-modeladmin_register(WagtailEventAdmin)
+class WagtailFormalsAdminGroup(ModelAdminGroup):
+    menu_label = 'Formals'
+    menu_icon = 'tick'
+    menu_order = 700
+    items = (WagtailBookingAdmin, WagtailEventAdmin)
+
+modeladmin_register(WagtailFormalsAdminGroup)
