@@ -33,7 +33,7 @@ s3transfer==0.1.10
 sendgrid==4.2.0
 sendgrid-django==4.0.4
 six==1.10.0
-Unidecode==0.4.20
+Unidecode==0.04.21
 wagtail==1.11
 wagtailmenus==2.3.1
 whitenoise==3.3.0
