@@ -20,7 +20,7 @@ html5lib==0.999999999
 jmespath==0.9.3
 libsass==0.13.2
 packaging==16.8
-Pillow==3.2.0
+Pillow==4.2.1
 psycopg2==2.6
 pyparsing==2.2.0
 python-dateutil==2.6.0
