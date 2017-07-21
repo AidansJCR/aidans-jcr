@@ -12,6 +12,7 @@
         <link rel="manifest" href="{% static 'favicons/manifest.json' %}">
         <link rel="mask-icon" href="{% static 'favicons/safari-pinned-tab.svg' %}" color="#85969c">
         <meta name="theme-color" content="#ff2211">
+        <meta name="description" content="{% if self.search_description %}{{ self.search_description }}{% endif %}">
         <title>
             {% block title %}
                 {% if self.seo_title %}{{ self.seo_title }}{% else %}{{ self.title }}{% endif %}
@@ -22,7 +23,6 @@
                 {% endwith %}
             {% endblock %}
         </title>
-        <meta name="description" content="" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         {# Global stylesheets #}
         <link rel="stylesheet" type="text/css" href="{% static 'css/jcrsite.css' %}" async>
