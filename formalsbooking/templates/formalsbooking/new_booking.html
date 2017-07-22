@@ -14,7 +14,7 @@
     <strong>Error</strong> {{ error }}
   </div>
   {% endif %}
-  <form action="" method="post">
+  <form id="new-booking-form" action="" method="post">
          {% csrf_token %}
          <table class="table">
          {{ form }}

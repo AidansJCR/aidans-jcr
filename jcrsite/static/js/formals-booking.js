@@ -1,6 +1,16 @@
 jQuery(document).ready(function() {
   const BASE_URL = window.origin
   const ADD_GROUP_PATH = '/formals-booking/api/add_group'
+  const SUBMIT_URL_FULL = window.location.href;
+
+  $('#new-booking-form').on('submit', function(e) {
+      e.preventDefault();
+      console.log($(this).serialize());
+  });
+
+
+
+
 
   var groupEditorUpdate = function() {
 
@@ -60,5 +70,10 @@ jQuery(document).ready(function() {
   groupEditorUpdate();
 
   $('input[type=radio]').click(groupEditorUpdate);
+
+
+  // serialise form for sending properly
+
+
 
 });
