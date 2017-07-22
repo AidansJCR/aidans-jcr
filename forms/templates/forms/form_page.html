@@ -1,5 +1,5 @@
 {% extends "base.html" %}
-{% load wagtailcore_tags wagtailimages_tags static %}
+{% load wagtailcore_tags wagtailimages_tags static widget_tweaks %}
 {% block body_class %}template-form{% endblock %}
 
 {% block content %}
@@ -7,10 +7,17 @@
 <div class="container page-container">
     <h1>{{ page.title }}</h1>
     {{ page.intro|richtext }}
-    <form action="{% pageurl page %}" method="POST">
+    <hr />
+    <form class="form" action="{% pageurl page %}" method="POST">
         {% csrf_token %}
-        {{ form.as_p }}
-        <input type="submit">
+        {% for field in form %}
+          <fieldset class="form-group">
+                  <label class="h3" for="id_{{ field.name }}">{{ field.label }}</label>
+                  <p class="form-text muted">{{ field.help_text }} </p>
+                  {{ field |add_class:"form-control" }}
+          </fieldset>
+        {% endfor %}
+        <input type="submit" class="btn btn-primary" value="Submit!">
     </form>
 </div>
 
