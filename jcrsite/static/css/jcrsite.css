@@ -12,6 +12,18 @@ html {
 body {
   /* Margin bottom by footer height */
 }
+.page-container {
+  min-height: 50vh;
+}
+.navbar-toggler-center {
+  align-self: center !important; /* Make hamburger be in the middle */
+}
+.navbar-brand-text {
+  vertical-align: middle;
+}
+.bg-darkred {
+  background-color: #BB2222;
+}
 
 footer {
   right: 0;
@@ -258,7 +270,7 @@ footer a {
 }
 
 .bottom {
-  background-color: darkred;
+  background-color: #AA2222;
   border-radius: 10px;
   text-align: center;
   padding: 0 !important;

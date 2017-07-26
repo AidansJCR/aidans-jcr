@@ -1,14 +1,14 @@
 {% load menu_tags static %}
-<nav class="navbar navbar-toggleable-md navbar-inverse bg-danger">
-    <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarColor02" aria-controls="navbarColor02" aria-expanded="false" aria-label="Toggle navigation">
+<nav class="navbar navbar-toggleable-md navbar-inverse bg-darkred">
+    <a class="navbar-brand" href="/"><img src="{% static 'images/badger.svg'%}" class="d-inline-block" style="width: 100px;"/><span class="h2 p-2 navbar-brand-text">St Aidan's JCR</span></a>
+    <button class="navbar-toggler nav-item m-2 navbar-toggler-center" type="button" data-toggle="collapse" data-target="#navbarColor02" aria-controls="navbarColor02" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
-    <a class="navbar-brand" href="/"><img src="{% static 'images/badger-logo.png'%}" class="d-inline-block" /><span class="h2">Aidan's JCR</span></a>
 
     <div class="collapse navbar-collapse" id="navbarColor02">
       <ul class="navbar-nav mr-auto">
         {% for item in menu_items %}
-        <li class="nav-item {{ item.active_class }}">
+        <li class="nav-item p-2 {{ item.active_class }}">
           <a class="nav-link" href="{{ item.href }}">{{ item.text }}</a>
         </li>
         {% endfor %}

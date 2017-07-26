@@ -92,3 +92,7 @@ ENV/
 *.db
 
 .idea/
+
+# Vagrant
+.vagrant/*
+*vagrant/*

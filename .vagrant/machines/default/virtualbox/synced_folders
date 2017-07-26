@@ -1,1 +1,1 @@
-{"virtualbox":{"/vagrant":{"guestpath":"/vagrant","hostpath":"/home/ryan/Documents/Programming/aidans-jcr","disabled":false,"__vagrantfile":true}}}
+{"virtualbox":{"project":{"create":false,"owner":null,"group":null,"nfs":false,"transient":false,"extra":null,"id":"project","guestpath":"/home/vagrant/{{ project_name }}","hostpath":"/home/ryan/Programming/aidans-jcr","disabled":false,"__vagrantfile":true}}}
