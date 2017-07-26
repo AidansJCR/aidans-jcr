@@ -67,7 +67,7 @@ footer a {
 
 /* Fix indent error for Alert on Homepage */
 .alert {
-  margin-bottom: 0px;
+  margin-bottom: 0px !important;
 }
 /* Front page card niceties. From #1580 on littlesnippets.net */
 .snip1580 {
