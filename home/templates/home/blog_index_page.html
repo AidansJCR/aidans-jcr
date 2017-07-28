@@ -3,7 +3,8 @@
 {% block body_class %}template-blog{% endblock %}
 
 {% block content %}
-<div class="container page-container">
+<div class="page-container">
+<div class="container">
     {% include "breadcrumbs.html" %}
     <h1>{{ page.title }}</h1>
     <p>{{ page.intro |richtext}}</p>
@@ -28,5 +29,6 @@
         </figure>
     {% endfor %}
     </div>
+  </div>
 
 {% endblock %}
