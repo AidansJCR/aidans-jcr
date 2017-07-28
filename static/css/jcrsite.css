@@ -36,6 +36,10 @@ footer a {
 
 }
 
+.navbar-brand {
+  text-align: center !important;
+
+}
 .navbar-title-text {
   padding-left: 3px;
 }

@@ -25,6 +25,11 @@ body {
   background-color: #BB2222;
 }
 
+
+.navbar-brand {
+  text-align: center !important;
+
+}
 footer {
   right: 0;
   bottom: 0;
