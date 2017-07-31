@@ -28,7 +28,7 @@ python-dateutil==2.6.1
 python-http-client==2.4.0
 pytz==2017.2
 rcssmin==1.0.6
-requests==2.18.1
+requests==2.18.2
 rjsmin==1.0.12
 s3transfer==0.1.10
 sendgrid==4.2.0
