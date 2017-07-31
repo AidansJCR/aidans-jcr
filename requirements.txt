@@ -1,7 +1,7 @@
 appdirs==1.4.3
 beautifulsoup4==4.6.0
 boto3==1.4.4
-botocore==1.5.86
+botocore==1.5.90
 dj-database-url==0.4.2
 Django==1.11.3
 django-appconf==1.0.2
