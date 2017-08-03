@@ -96,3 +96,4 @@ ENV/
 # Vagrant
 .vagrant/*
 *vagrant/*
+/aidans-jcr/settings/local.py
