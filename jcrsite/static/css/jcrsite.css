@@ -12,11 +12,22 @@ html {
 body {
   /* Margin bottom by footer height */
 }
+
+nav {
+  display: inline-block;
+  margin: 0 auto;
+}
 .page-container {
   min-height: 50vh;
 }
 .navbar-toggler-center {
   align-self: center !important; /* Make hamburger be in the middle */
+}
+.aidans-header-row {
+  text-align: center !important;
+}
+.aidans-header-row a {
+  color: white;
 }
 
 .navbar-brand-text {
