@@ -60,7 +60,7 @@
         {% for card in page.main_cards.all %}
 
             <figure class="snip1580">
-              {% image card.image width-200 %}
+              {% image card.image width-200 class="blog-thumbnail"%}
               <figcaption>
 
                   <h4>{{ card.card_title }}</h4>
@@ -82,7 +82,7 @@
 
         {% for blogpost in blog_posts.all %}
             <figure class="snip1529">
-              {% image blogpost.feed_image height-200 %}
+              {% image blogpost.feed_image height-200 class="blog-thumbnail"%}
               <div class="date">
                   <span class="day">{{blogpost.first_published_at|date:"d"}}</span>
                   <span class="month">{{blogpost.first_published_at|date:"M"}}</span>

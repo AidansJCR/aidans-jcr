@@ -1,7 +1,7 @@
 {% extends "base.html" %}
 {% load wagtailcore_tags wagtailimages_tags static menu_tags %}
 {% block body_class %}template-club{% endblock %}
-
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 {% block content %}
 <div class="container page-container">
       {% include "breadcrumbs.html" %}
@@ -11,27 +11,29 @@
       </div>
       <div class="cards">
           {% for club in page.club.all %}
-          <div class="card" style="width: 20rem;">
-            {% image club.image height-500 class="img-thumbnail card-img-top" %}
-              <div class="card-block">
-                  <h4 class="card-title">{{ club.name }}</h4>
-                  <p class="card-text">{{ club.description |richtext}}</p>
-                  {% if club.facebook_link %}
-                     <a href="{{club.facebook_link}}" class="btn btn-primary">Facebook</a>
-                  {% endif %}
-                  {% if club.twitter_link %}
-                     <a href="{{club.twitter_link}}" class="btn btn-primary">Twitter</a>
-                  {% endif %}
-                  {% if club.email_address %}
-                     <a href="mailto://{{club.email_address}}" class="btn btn-primary">Email</a>
-                  {% endif %}
-              </div>
+          <figure class="card snip1165">
+            {% image club.image width-400 %}
+            <figcaption>
+              <h3>{{ club.name }}</h3>
+              <p class="text-justify">
+                {{ club.description | richtext }}
+              </p>
+              <span class="lead">Leader: {{club.leader}}</span>
+          <div class="icons">
+            <a href="{{ club.facebook_link }}"><i class="ion-social-facebook-outline"></i></a>
+            <a href="{{ club.twitter_link }}"> <i class="ion-social-twitter-outline"></i></a>
+            <a href="mailto://{{ club.email_address }}"> <i class="ion-ios-email-outline"></i></a>
           </div>
+  </figcaption>
+</figure>
           {% endfor %}
     </div>
 </div>
 {% endblock %}
 
+{% block extra_css %}
+<link rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css"/>
+{% endblock %}
 {% block extra_js %}
 <script type="text/javascript" src='{% static "js/isotope.pkgd.min.js" %}' defer></script>
 <script type="text/javascript" src='{% static "js/club.js" %}' defer></script>
