@@ -1,6 +1,20 @@
 /*html,body{height:100%;}*/
 /*.carousel,.item,.active{height:100%;}*/
 /*.carousel-inner{height:100%;}*/
+
+/* Override Bootstrap Container Sizes */
+@media (min-width: 2400px) {
+  .container {
+      width: 1920px !important;
+  }
+}
+
+@media (min-width: 1200px) {
+    .container{
+        max-width: 970px !important;
+    }
+}
+
 body {
   margin: 0 0 100px;
   clear: both;
