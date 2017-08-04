@@ -52,6 +52,13 @@ nav {
   background-color: #BB2222;
 }
 
+.footer-container {
+  padding-left: 0 !important;
+  padding-right: 0 !important;
+  margin-left: 0 !important;
+  margin-right: 0 !important;
+}
+
 .custom-navbar-toggle {
   float: none !important;
   padding: 0 !important;
@@ -315,14 +322,9 @@ footer a {
 
 .bottom {
   background-color: #AA2222;
-  border-radius: 10px;
   text-align: center;
-  padding: 0 !important;
-  margin: 0 !important;
-}
-.bottom .col {
-  vertical-align: middle;
-  margin: 0 auto;
-  padding-top: 10px;
-  padding-bottom: 10px;
+  padding-top: 20px;
+  padding-bottom: 20px;
+  margin: 0px !important;
+
 }
