@@ -186,7 +186,9 @@ footer a {
   color: #333;
 }
 
-
+.blog-thumbnail {
+  min-height: 200px !important;
+}
 .photo:hover {
   -webkit-transform: scale(1.02);
   -ms-transform: scale(1.02);
