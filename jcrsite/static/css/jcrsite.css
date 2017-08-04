@@ -16,6 +16,7 @@ body {
 nav {
   display: inline-block;
   margin: 0 auto;
+  float: none;
 }
 .page-container {
   min-height: 50vh;
@@ -37,7 +38,15 @@ nav {
   background-color: #BB2222;
 }
 
-
+.custom-navbar-toggle {
+  float: none !important;
+  padding: 0 !important;
+  margin-left: 0 !important;
+}
+.navbar-center-block {
+  margin: 0 auto !important;
+  display: inline-block;
+}
 .navbar-brand {
   text-align: center !important;
 
