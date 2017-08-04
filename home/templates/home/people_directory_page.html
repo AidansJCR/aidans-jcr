@@ -12,11 +12,11 @@
     </div>
     <div class="container">
       {% for card in page.people.all %}
-      <div class="d-flex align-content-stretch flex-wrap flex-sm-nowrap">
-        <div class="p-4">
+      <div>
+        <div class="col-md-3">
             {% image card.image width-200 style="min-width: 200px" %}
         </div>
-        <div class="p-2">
+        <div class="col-md-9">
             <h3 class="">{{ card.rolename }}: {{ card.name }}</h3>
             <p class="">{{card.description}}</p>
             <a href="mailto://{{card.email}}" class="btn btn-primary">Email: {{ card.email }}</a>
