@@ -1,6 +1,20 @@
 /*html,body{height:100%;}*/
 /*.carousel,.item,.active{height:100%;}*/
 /*.carousel-inner{height:100%;}*/
+
+/* Override Bootstrap Container Sizes */
+@media (min-width: 2400px) {
+  .container {
+      width: 1920px !important;
+  }
+}
+
+@media (min-width: 1200px) {
+    .container{
+        max-width: 970px !important;
+    }
+}
+
 body {
   margin: 0 0 100px;
   clear: both;
@@ -12,12 +26,25 @@ html {
 body {
   /* Margin bottom by footer height */
 }
+
+nav {
+  display: inline-block;
+  margin: 0 auto;
+  float: none;
+}
 .page-container {
   min-height: 50vh;
 }
 .navbar-toggler-center {
   align-self: center !important; /* Make hamburger be in the middle */
 }
+.aidans-header-row {
+  text-align: center !important;
+}
+.aidans-header-row a {
+  color: white;
+}
+
 .navbar-brand-text {
   vertical-align: middle;
 }
@@ -25,7 +52,22 @@ body {
   background-color: #BB2222;
 }
 
+.footer-container {
+  padding-left: 0 !important;
+  padding-right: 0 !important;
+  margin-left: 0 !important;
+  margin-right: 0 !important;
+}
 
+.custom-navbar-toggle {
+  float: none !important;
+  padding: 0 !important;
+  margin-left: 0 !important;
+}
+.navbar-center-block {
+  margin: 0 auto !important;
+  display: inline-block;
+}
 .navbar-brand {
   text-align: center !important;
 
@@ -144,7 +186,9 @@ footer a {
   color: #333;
 }
 
-
+.blog-thumbnail {
+  min-height: 200px !important;
+}
 .photo:hover {
   -webkit-transform: scale(1.02);
   -ms-transform: scale(1.02);
@@ -280,14 +324,138 @@ footer a {
 
 .bottom {
   background-color: #AA2222;
-  border-radius: 10px;
   text-align: center;
-  padding: 0 !important;
-  margin: 0 !important;
+  padding-top: 20px;
+  padding-bottom: 20px;
+  margin: 0px !important;
+
 }
-.bottom .col {
-  vertical-align: middle;
-  margin: 0 auto;
-  padding-top: 10px;
-  padding-bottom: 10px;
+
+
+
+/*This is for club page featuring*/
+figure.snip1165 {
+  font-family: 'Raleway', Arial, sans-serif;
+  position: relative;
+  float: left;
+  overflow: hidden;
+  margin: 10px 1%;
+  min-width: 220px;
+  max-width: 310px;
+  width: 100%;
+  background: #000000;
+  color: #333;
+  text-align: left;
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.15);
+}
+figure.snip1165 * {
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+  -webkit-transition: all 0.35s cubic-bezier(0.25, 0.5, 0.5, 0.9);
+  transition: all 0.35s cubic-bezier(0.25, 0.5, 0.5, 0.9);
+}
+figure.snip1165 img {
+  max-width: 100%;
+  vertical-align: top;
+}
+figure.snip1165 figcaption {
+  position: relative;
+  background-color: #ffffff;
+  padding: 20px 25px 50px;
+}
+figure.snip1165 h3 {
+  position: absolute;
+  bottom: 100%;
+  text-transform: uppercase;
+  padding: 10px 25px;
+  border-radius: 0 5px 0 0;
+  margin: 0;
+  left: 0;
+  font-weight: 400;
+  background-color: #000000;
+  color: #ffffff;
+}
+figure.snip1165 h3 span {
+  font-weight: 800;
+}
+figure.snip1165 p {
+  font-size: 0.8em;
+  font-weight: 500;
+  text-align: left;
+  margin: 0;
+  line-height: 1.6em;
+}
+figure.snip1165 .icons {
+  position: absolute;
+  bottom: 0;
+  right: 25px;
+}
+figure.snip1165 i {
+  margin: 0 2px;
+  display: inline-block;
+  font-size: 20px;
+  color: #ffffff;
+  width: 30px;
+  height: 30px;
+  line-height: 30px;
+  text-align: center;
+  background: #000000;
+  box-shadow: 0 0 2px rgba(0, 0, 0, 0.5);
+  border-radius: 5px 5px 0 0;
+}
+figure.snip1165 i:hover {
+  background-color: #000000;
+  color: white !important;
+}
+figure.snip1165 a {
+  opacity: 0.8;
+  display: inline-block;
+}
+figure.snip1165 a:hover {
+  opacity: 1;
+}
+figure.snip1165.blue {
+  background-color: #2472a4;
+}
+figure.snip1165.blue figcaption:after,
+figure.snip1165.blue h3,
+figure.snip1165.blue i {
+  background-color: #2472a4;
+}
+figure.snip1165.red {
+  background-color: #ab3326;
+}
+figure.snip1165.red figcaption:after,
+figure.snip1165.red h3,
+figure.snip1165.red i {
+  background-color: #ab3326;
+}
+figure.snip1165.green {
+  background-color: #229955;
+}
+figure.snip1165.green figcaption:after,
+figure.snip1165.green h3,
+figure.snip1165.green i {
+  background-color: #229955;
+}
+figure.snip1165.orange {
+  background-color: #d67118;
+}
+figure.snip1165.orange figcaption:after,
+figure.snip1165.orange h3,
+figure.snip1165.orange i {
+  background-color: #d67118;
+}
+figure.snip1165.navy {
+  background-color: #2b3c4e;
+}
+figure.snip1165.navy figcaption:after,
+figure.snip1165.navy h3,
+figure.snip1165.navy i {
+  background-color: #2b3c4e;
+}
+figure.snip1165:hover img,
+figure.snip1165.hover img {
+  -webkit-transform: scale(1.1);
+  transform: scale(1.1);
 }

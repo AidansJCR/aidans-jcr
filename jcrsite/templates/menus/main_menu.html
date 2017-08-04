@@ -1,21 +1,56 @@
 {% load menu_tags static %}
-<nav class="navbar navbar-toggleable-md navbar-inverse bg-darkred">
-    <a class="navbar-brand" href="/"><img src="{% static 'images/badger.svg'%}" class="d-inline-block" style="width: 100px;"/><span class="h2 p-2 navbar-brand-text">St Aidan's JCR</span></a>
-    <button class="navbar-toggler nav-item m-2 navbar-toggler-center" type="button" data-toggle="collapse" data-target="#navbarColor02" aria-controls="navbarColor02" aria-expanded="false" aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon"></span>
-    </button>
 
-    <div class="collapse navbar-collapse" id="navbarColor02">
-      <ul class="navbar-nav mr-auto">
+<!-- First, the website header -->
+<div class="container-fluid bg-darkred" style="padding-top: 6px; padding-bottom: 6px;">
+  <div class="aidans-header-row row">
+    <a href="/"><img src="{% static 'images/badger.svg'%}" class="d-inline-block" style="width: 100px;"/><span class="h5 navbar-brand-text">St Aidan's JCR</span></a>
+  </div>
+</div>
+
+<!-- Then the navbar itself -->
+<nav class="navbar navbar-default" style="margin: 0 auto; text-align: center;">
+  <div class="navbar-center-block">
+  <div class="navbar-header">
+    <button type="button" class="custom-navbar-toggle navbar-toggle collapsed" data-toggle="collapse" data-target="#aidans-navbar-collapse" aria-expanded="false">
+      <span class="sr-only">Toggle navigation</span>
+      <span class="icon-bar"></span>
+      <span class="icon-bar"></span>
+      <span class="icon-bar"></span>
+    </button>
+  </div>
+
+  <div class="container-fluid">
+    <div class="collapse navbar-collapse" id="aidans-navbar-collapse">
+      <ul class="nav navbar-nav">
         {% for item in menu_items %}
-        <li class="nav-item p-2 {{ item.active_class }}">
-          <a class="nav-link" href="{{ item.href }}">{{ item.text }}</a>
-        </li>
+          <li class="{{ item.active_class }}"><a href="{{item.href}}">{{ item.text }}</a></li>
         {% endfor %}
       </ul>
-      <form class="form-inline" action="{% url 'search' %}" action="get">
+      <form class="navbar-form navbar-left" action="{% url 'search' %}">
+        <div class="form-group">
+          <input type="text" class="form-control" name="query" placeholder="Search">
+        </div>
+        <button type="submit" class="btn btn-default">Submit</button>
+      </form>
+    </div>
+  </div>
+</div>
+</nav>
+
+
+
+
+
+<!--
+
+
+
+
+<nav class="navbar navbar-toggleable-md navbar-inverse bg-darkred"> -->
+
+      <!-- <form class="form-inline" action="{% url 'search' %}" action="get">
         <input class="form-control mr-sm-2" type="text" placeholder="Search" name="query">
         <button class="btn btn-outline-secondary my-2 my-sm-0" type="submit">Search</button>
       </form>
     </div>
-  </nav>
+  </nav> -->

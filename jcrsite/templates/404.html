@@ -1,12 +1,13 @@
 {% extends "base.html" %}
-
+{% load static %}
 {% block body_class %}template-404{% endblock %}
 
 {% block content %}
-
-<div class="container">
-    <h1>Sorry, this page has been misplaced.</h1>
-    <p>Don't worry though, try searching for it in the search bar.</p>
+<div class="page-container">
+  <div class="container">
+      <img class="center-block " src="{% static 'images/dancing-badger.gif' %}" alt="Badger says sorry"/>
+      <h1 class="align-center">Sorry, this page has been misplaced.</h1>
+      <p>Don't worry though, try searching for it in the search bar.</p>
+  </div>
 </div>
-
 {% endblock %}
