@@ -31,7 +31,7 @@ rcssmin==1.0.6
 requests==2.18.3
 rjsmin==1.0.12
 s3transfer==0.1.10
-sendgrid==4.2.0
+sendgrid==4.2.1
 sendgrid-django==4.0.4
 six==1.10.0
 Unidecode==0.04.21
