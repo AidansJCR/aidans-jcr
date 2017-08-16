@@ -20,10 +20,16 @@
               </p>
               <span class="lead">Leader: {{club.leader}}</span>
           <div class="icons">
+            {% if club.facebook_link %}
             <a href="{{ club.facebook_link }}"><i class="ion-social-facebook-outline"></i></a>
+            {% endif %}
+            {% if club.twitter_link %}
             <a href="{{ club.twitter_link }}"> <i class="ion-social-twitter-outline"></i></a>
+            {% endif %}
+            {% if club.email_address %}
             <a href="mailto://{{ club.email_address }}"> <i class="ion-ios-email-outline"></i></a>
-          </div>
+            {% endif %} 
+         </div>
   </figcaption>
 </figure>
           {% endfor %}
