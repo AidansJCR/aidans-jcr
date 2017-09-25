@@ -35,7 +35,7 @@ sendgrid==5.2.0
 sendgrid-django==4.0.4
 six==1.11.0
 Unidecode==0.04.21
-wagtail==1.11.1
+wagtail==1.12.2
 wagtailmenus==2.3.2
 whitenoise==3.3.0
 Willow==0.4
