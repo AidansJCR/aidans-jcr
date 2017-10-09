@@ -25,7 +25,7 @@ Pillow==4.3.0
 psycopg2==2.7.3.1
 pyparsing==2.2.0
 python-dateutil==2.6.1
-python-http-client==2.4.0
+python-http-client==3.0.0
 pytz==2017.2
 rcssmin==1.0.6
 requests==2.18.2
