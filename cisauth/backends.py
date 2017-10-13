@@ -13,6 +13,7 @@ class CISBackend(object):
          # see if the user is valid on the durham server
         validator_resp = requests.get('https://www.dur.ac.uk/its/password/validator', auth=(username,password))
         college_info = requests.get('https://community.dur.ac.uk/grey.jcr/itsuserdetailsjson.php', params={'username': str(username)})
+
         # Make name case insensitive, as we don't want to create two users by accident
         username_case_insensitive = username.lower()
         print(username)
