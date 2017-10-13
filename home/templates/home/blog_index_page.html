@@ -16,7 +16,7 @@
            You have to use specific in order to get the non-abstract value.
            Therefore, specific is needed to fetch all the Blog page specific data like image.
     -->
-        {% image blogpost.specific.feed_image height-200 class="blog-thumbnail" %}
+        {% image blogpost.specific.feed_image fill-400x200 class="blog-thumbnail" %}
         <div class="date">
               <span class="day">{{blogpost.first_published_at|date:"d"}}</span>
               <span class="month">{{blogpost.first_published_at|date:"M"}}</span>
