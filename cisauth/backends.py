@@ -11,10 +11,12 @@ import time
 class CISBackend(object):
     def authenticate(self,username=None,password=None):
          # see if the user is valid on the durham server
-        validator_resp = requests.get('https://www.dur.ac.uk/its/password/validator', auth=(username,password)) 
+        validator_resp = requests.get('https://www.dur.ac.uk/its/password/validator', auth=(username,password))
         college_info = requests.get('https://community.dur.ac.uk/grey.jcr/itsuserdetailsjson.php', params={'username': str(username)})
+        # Make name case insensitive, as we don't want to create two users by accident
+        username_case_insensitive = username.lower()
         print(username)
-        print(college_info.json())
+        print(username_case_insensitive)
         info = None
         # now determine whether the user is at Aidan's
         if(college_info.status_code != 400):
@@ -23,10 +25,10 @@ class CISBackend(object):
         if(validator_resp.status_code != 401 and info is not None and info['college']=="St Aidan's College"):
             # The user is authenticated, and part of Aidan's
             try:
-                return User.objects.get(username=username)
+                return User.objects.get(username=username_case_insensitive)
             except User.DoesNotExist:
                 # Create a new Django user, getting information from the info database
-                user = User(username=username)
+                user = User(username=username_case_insensitive)
                 user.is_staff = False
                 user.is_superuser = False
                 user.email = info['email']
