@@ -14,7 +14,7 @@
       {% for card in page.people.all %}
       <div>
         <div class="col-sm-12 col-md-12 col-lg-3">
-            {% image card.image width-200 style="min-width: 200px" %}
+            {% image card.image fill-200x200%}
         </div>
         <div class="col-sm-12 col-md-12 col-lg-9">
             <h3 class="">{{ card.rolename }}: {{ card.name }}</h3>
