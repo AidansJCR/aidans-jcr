@@ -6,33 +6,54 @@ This is the start of something new... the creation of a website designed BY stud
 
 That's the mentaility I have when creating this site.
 
-## Want to help with development?
-We encourage people to get involved with this project! Whether you are a hardcore Django/Python developer, or want to learn programming, get in contact! If you are somewhat knowledgeable about programming, simply send a pull request to help fix any issues you've encountered. For those who want to learn more, email the IT Officer at `it@st-aidans.com`. 
-
-For those non-techy characters amongst you, do not fear! If you have any interest in design/art, we welcome people to help contribute to the style of the site, creating icons/artwork to make the website that little bit nicer to visit.
-
-## Requirements:
-+ Python3
-+ Django
-+ Wagtail CMS
-
 ## Getting Started
-If you want to download a local copy of the website, simply clone the repository.
+### 1. Clone the repository
+You can either use a GitHub desktop client, or in the terminal:
 
-You might also need to install certain libraries for Linux, as found on the Getting Started with Wagtail page.
+```bash
+git clone https://GitHub.com/AidansJCR/aidans-jcr.git
+```
 
-## Current Projects
-We are trying to replace the current site with this new one before the term is out. Therefore, we have a number of tasks we
-need to do:
+### 2. Download Vagrant
+We use Vagrant in order to avoid polluting your system with all the dependencies.
+This is useful if you do other Python work, and want different versions of libraries.
 
-- Host images on AWS S3
-- Improve front page UI with new images from Summer events
-- Basic college info and photos (ready for freshers)
+[Click here to download it.](https://www.vagrantup.com/downloads.html)
 
-We are also eventually going to work out a more permanent hosting situation, be that S3 and Heroku or a custom Docker image.
+### 3. Provision your Vagrant Machine.
 
-This also needs to be the centre point for various other college features. We still need to build the Aidan's Dashboard,
-Shop ordering system (to replace the old one), Sports and Societies web area, and make the site itself actually nice for 
-potential new Technology Committee members next year.
+In the command line, run:
 
-Oh, and if all else fails: fix JavaScript errors!
+```bash
+vagrant up
+```
+
+This will set up your virtual machine and download all the needed files.
+
+### 4. Run the Vagrant Machine
+
+Do this in the command line. Run:
+
+```bash
+vagrant ssh
+```
+
+You will now be dropped in a terminal session on the Vagrant Machine, which means
+everything is now installed.
+
+### 5. Run the test server
+
+To test changes to your code, you need to run a local version of the site. This
+can be done easily by running the following command:
+
+```bash
+python3 manage.py runserver 0.0.0.0:8000
+```
+
+Then go to your normal web browser, and navigate to ```localhost:8000``` and
+you should see the debug version of the site!
+
+### 6. Get Developing!
+That's it, you can now write code using any text editor of your choice. Just modify the code,
+and then check back to the web browser session on the localhost version (be sure you aren't looking
+at the live website). When you are ready, commit your changes and push them (after creating a pull request).
