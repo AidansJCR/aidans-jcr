@@ -5,24 +5,11 @@ from modelcluster.fields import ParentalKey
 from wagtail.wagtailimages.edit_handlers import ImageChooserPanel
 from wagtail.wagtailadmin.edit_handlers import FieldPanel, InlinePanel, PageChooserPanel
 from wagtail.wagtailcore.fields import RichTextField
-
+from wagtail.wagtailcore.models import Collection
 from wagtail.wagtailcore.models import Page, Orderable
 
 # Create your models here.
 
-class AlbumPage(Page):
-    description = RichTextField()
-
-    content_panels = Page.content_panels + [
-        FieldPanel('description', classname="full"),
-        InlinePanel('gallery_images', label="Images"),  # the carousel on the page
-    ]
-class AlbumImage(Orderable):
-    page = ParentalKey(AlbumPage, related_name='gallery_images')
-    image = models.ForeignKey(
-        'wagtailimages.Image', on_delete=models.CASCADE, related_name='+'
-    )
-
-    panels = [
-        ImageChooserPanel('image'),
-    ]
+class Album(models.Model):
+    collection = models.ForeignKey(Collection, on_delete=models.SET_NULL, null=True)
+    description = models.CharField(max_length=200, blank=True)
