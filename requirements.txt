@@ -1,7 +1,7 @@
 appdirs==1.4.3
 beautifulsoup4==4.6.0
 boto3==1.4.7
-botocore==1.7.25
+botocore==1.7.28
 dj-database-url==0.4.2
 Django==1.11.6
 django-appconf==1.0.2
@@ -19,7 +19,7 @@ greenlet==0.4.12
 gunicorn==19.7.1
 html5lib==0.999999999
 jmespath==0.9.3
-libsass==0.13.2
+libsass==0.13.3
 packaging==16.8
 Pillow==4.3.0
 psycopg2==2.7.3.1
@@ -36,6 +36,6 @@ sendgrid-django==4.0.4
 six==1.11.0
 Unidecode==0.04.21
 wagtail==1.12.2
-wagtailmenus==2.4.1
+wagtailmenus==2.5
 whitenoise==3.3.1
 Willow==1.0
