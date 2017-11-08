@@ -37,6 +37,7 @@ INSTALLED_APPS = [
     'search',
     'forms',
     'gallery',
+    'fincomm',
     'aidansadmintheme',
     'wagtail.wagtailforms',
     'wagtail.wagtailredirects',
