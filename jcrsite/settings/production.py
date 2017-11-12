@@ -26,9 +26,13 @@ if db_from_env:
     AWS_HEADERS = {
         'Cache-Control': 'max-age=86400',
     }
+    
     # SendGrid
-    EMAIL_BACKEND = "sgbackend.SendGridBackend"
-    SENDGRID_API_KEY = os.environ['SENDGRID_API_KEY']
+    EMAIL_HOST = 'smtp.sendgrid.net'
+    EMAIL_HOST_USER = os.environ['SENDGRID_USERNAME']
+    EMAIL_HOST_PASSWORD = os.environ['SENDGRID_PASSWORD']
+    EMAIL_PORT = 587
+    EMAIL_USE_TLS = True
 
     # SECURITY WARNING: keep the secret key used in production secret!
     SECRET_KEY = os.environ['DJANGO_SECRET_KEY']
