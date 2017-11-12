@@ -1,0 +1,16 @@
+{% extends "base.html" %}
+{% load wagtailcore_tags wagtailimages_tags static widget_tweaks %}
+{% block body_class %}template-form{% endblock %}
+
+{% block content %}
+
+<div class="container page-container">
+  <h1>
+    Thank you for submitting the form!
+  </h1>
+  <p>
+    {{page.thank_you_text|safe}}
+  </p>
+</div>
+
+{% endblock %}
