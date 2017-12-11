@@ -17,7 +17,7 @@ docutils==0.14
 gevent==1.2.2
 greenlet==0.4.12
 gunicorn==19.7.1
-html5lib==0.999999999
+html5lib==1.0.1
 jmespath==0.9.3
 libsass==0.13.3
 packaging==16.8
