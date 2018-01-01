@@ -1,0 +1,52 @@
+{% extends "base.html" %}
+{% load static menu_tags %}
+{% block body_class %}template-transaction-list{% endblock %}
+
+{% block content %}
+<div class="container page-container">
+    <div class="title-header">
+        <h1 class="display1">Due Payments</h1>
+        <p class="subtitle">
+          Here are a list of payments that are now due.
+          Payment must be done by Bank Transfer. To pay, simply click
+          the button, and use the information to make the bank transfer.
+          Once this is done, confirm you have made payment.
+          Any questions?
+          <a href="mailto://treasurer@st-aidans.com">Email the JCR
+            Treasurer</a>
+        </p>
+    </div>
+    <div class="table-responsive">
+      <table class="table table-bordered table-hover table-striped">
+        <thead>
+        <tr>
+          <td>
+            Charge
+          </td>
+          <td>
+            Amount (£)
+          </td>
+          <td>
+            Details
+          </td>
+        </tr>
+      </thead>
+        <tbody>
+        {% for transaction in transactions%}
+        <tr>
+          <td>
+            {{ transaction.name }}
+          </td>
+          <td>
+            {{ transaction.money_to_pay }}
+          </td>
+          <td>
+            <a href="#" class="btn btn-primary">Pay</a>
+          </td>
+        </tr>
+        {% endfor %}
+      </tbody>
+      </table>
+    </div>
+</div>
+{% endblock %}

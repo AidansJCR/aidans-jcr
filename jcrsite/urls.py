@@ -10,12 +10,15 @@ from wagtail.wagtailcore import urls as wagtail_urls
 from wagtail.wagtaildocs import urls as wagtaildocs_urls
 from wagtail.contrib.wagtailsitemaps.views import sitemap
 
+from fincomm import urls as fincomm_urls
+
 from django.contrib.auth import views as auth_views
 
 urlpatterns = [
     url(r'^login/$', auth_views.login, name='login'),
     url(r'^logout/$', auth_views.logout, name='logout'),
     url(r'^django-admin/', include(admin.site.urls)),
+    url(r'^dashboard/fincomm/', include(fincomm_urls)),
     url(r'^admin/', include(wagtailadmin_urls)),
     url(r'^documents/', include(wagtaildocs_urls)),
     url(r'^search/$', search_views.search, name='search'),
