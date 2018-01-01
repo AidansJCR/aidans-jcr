@@ -1,9 +1,11 @@
 from django.shortcuts import render
 from django.views.generic import ListView
 from django.http import HttpResponse
+from django.contrib.auth.decorators import login_required
 from fincomm.models import Account, Transaction
 # Create your views here.
 
+@login_required
 def display_transaction_list(request):
     account = Account.objects.filter(user=request.user)
     transactions = Transaction.objects.filter(debtor=account)

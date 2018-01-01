@@ -4,6 +4,7 @@ This might need to be changed if a more secure method of auth is available
 (e.g. Shibboleth).
 """
 from django.contrib.auth.models import User
+from fincomm.models import Account
 import requests
 import time
 
@@ -16,8 +17,6 @@ class CISBackend(object):
 
         # Make name case insensitive, as we don't want to create two users by accident
         username_case_insensitive = username.lower()
-        print(username)
-        print(username_case_insensitive)
         info = None
         # now determine whether the user is at Aidan's
         if(college_info.status_code != 400):
@@ -36,6 +35,11 @@ class CISBackend(object):
                 user.first_name = info['firstnames']
                 user.last_name = info['surname']
                 user.save()
+
+                # Now create the associated account, important for
+                # student based systems.
+                account = Account(user=user)
+                account.save()
                 return user
         return None
 
