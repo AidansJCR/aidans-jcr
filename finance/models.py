@@ -1,6 +1,7 @@
 from django.db import models
 from django.contrib.auth.models import User
 # Create your models here.
+
 class TransactionInfo(models.Model):
     """ The information about a given transaction, i.e. formal payment. Displays in the user's dashboard """
     name = models.CharField(max_length=256)

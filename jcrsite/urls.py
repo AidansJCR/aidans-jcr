@@ -10,6 +10,8 @@ from wagtail.wagtailcore import urls as wagtail_urls
 from wagtail.wagtaildocs import urls as wagtaildocs_urls
 from wagtail.contrib.wagtailsitemaps.views import sitemap
 
+from dashboard import urls as dashboard_urls
+
 from django.contrib.auth import views as auth_views
 
 urlpatterns = [
@@ -20,6 +22,7 @@ urlpatterns = [
     url(r'^documents/', include(wagtaildocs_urls)),
     url(r'^search/$', search_views.search, name='search'),
     url(r'^sitemap\.xml$', sitemap),
+    url(r'^dashboard/', include(dashboard_urls)),
     url(r'', include(wagtail_urls)),
 ]
 

@@ -38,6 +38,7 @@ INSTALLED_APPS = [
     'forms',
     'gallery',
     'finance',
+    'dashboard',
     'aidansadmintheme',
     'wagtail.wagtailforms',
     'wagtail.wagtailredirects',
