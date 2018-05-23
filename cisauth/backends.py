@@ -10,21 +10,15 @@ import time
 
 class CISBackend(object):
     def authenticate(self,username=None,password=None):
-         # see if the user is valid on the durham server
+        """Authenticate with the Durham backend, to check username and password"""
+        # TODO: ideally check they are a member of Aidan's. In practice, this is more challenging.
+        # see if the user is valid on the Durham server
         validator_resp = requests.get('https://www.dur.ac.uk/its/password/validator', auth=(username,password))
-        college_info = requests.get('https://community.dur.ac.uk/grey.jcr/itsuserdetailsjson.php', params={'username': str(username)})
 
         # Make name case insensitive, as we don't want to create two users by accident
         username_case_insensitive = username.lower()
-        print(username)
-        print(username_case_insensitive)
-        info = None
-        # now determine whether the user is at Aidan's
-        if(college_info.status_code != 400):
-            info = college_info.json()
 
-        if(validator_resp.status_code != 401 and info is not None and info['college']=="St Aidan's College"):
-            # The user is authenticated, and part of Aidan's
+        if(validator_resp.status_code != 401):
             try:
                 return User.objects.get(username=username_case_insensitive)
             except User.DoesNotExist:
@@ -32,9 +26,7 @@ class CISBackend(object):
                 user = User(username=username_case_insensitive)
                 user.is_staff = False
                 user.is_superuser = False
-                user.email = info['email']
-                user.first_name = info['firstnames']
-                user.last_name = info['surname']
+                user.email = username_case_insensitive + "@durham.ac.uk"
                 user.save()
                 return user
         return None
