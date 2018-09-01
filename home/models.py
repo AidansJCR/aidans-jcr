@@ -12,6 +12,7 @@ from wagtail.wagtailcore.models import Page, Orderable
 from wagtail.wagtailimages.edit_handlers import ImageChooserPanel
 from wagtail.wagtailsearch import index
 from wagtail.wagtaildocs.blocks import DocumentChooserBlock
+from home.blocks import LinkedButtonBlock
 
 class BlogPage(MenuPage):
     # owner can be obtained from the owner attribute (in Page).
@@ -182,10 +183,12 @@ class PageLinks(Orderable):
 class PersonProfile(Orderable):
     page = ParentalKey(PeopleDirectoryPage, related_name='people')
     name = models.CharField(max_length=100)
-    email = models.EmailField()
+    email = models.EmailField(blank=True)
     rolename = models.CharField(max_length=100)
     description = models.TextField()
-    facebook_link = models.URLField(blank=True)
+    facebook_links = StreamField([
+        ('facebook_link', LinkedButtonBlock())
+        ], null=True)
     image = models.ForeignKey(
         'wagtailimages.Image', on_delete=models.CASCADE, related_name='+'
     )
@@ -196,7 +199,7 @@ class PersonProfile(Orderable):
         ImageChooserPanel('image'),
         FieldPanel('rolename'),
         FieldPanel('description'),
-        FieldPanel('facebook_link'),
+        StreamFieldPanel('facebook_links'),
     ]
 
 

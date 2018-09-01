@@ -19,10 +19,13 @@
         <div class="col-sm-12 col-md-12 col-lg-9">
             <h3 class="">{{ card.rolename }}: {{ card.name }}</h3>
             <p class="">{{card.description}}</p>
-            <a href="mailto://{{card.email}}" class="btn btn-primary">Email: {{ card.email }}</a>
-            {% if card.facebook_link %}
-            <a href="{{card.facebook_link}}" class="btn btn-info">Facebook</a>
+            {% if card.email %}
+              <a href="mailto://{{card.email}}" class="btn btn-primary">Email: {{ card.email }}</a>
             {% endif %}
+
+            {% for block in card.facebook_links %}
+              {{ block }}
+            {% endfor %}
         </div>
       </div>
       {% endfor %}
