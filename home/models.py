@@ -188,7 +188,7 @@ class PersonProfile(Orderable):
     description = models.TextField()
     facebook_links = StreamField([
         ('facebook_link', LinkedButtonBlock())
-        ], null=True)
+        ], null=True, blank=True)
     image = models.ForeignKey(
         'wagtailimages.Image', on_delete=models.CASCADE, related_name='+'
     )
