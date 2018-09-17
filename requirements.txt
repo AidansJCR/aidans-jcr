@@ -26,7 +26,7 @@ l18n==2016.6.4
 libsass==0.15.0
 olefile==0.46
 Pillow==5.2.0
-psycopg2==2.7.3.2
+psycopg2==2.7.5
 pyparsing==2.2.0
 python-dateutil==2.6.1
 python-http-client==3.0.0
