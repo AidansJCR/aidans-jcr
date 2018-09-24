@@ -16,7 +16,7 @@ django-widget-tweaks==1.4.3
 djangorestframework==3.8.2
 docutils==0.14
 draftjs-exporter==2.1.2
-gevent==1.2.2
+gevent==1.3.6
 greenlet==0.4.12
 gunicorn==19.7.1
 html5lib==0.999999999
