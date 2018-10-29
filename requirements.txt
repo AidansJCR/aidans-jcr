@@ -44,4 +44,4 @@ wagtail==2.3
 wagtailmenus==2.11.1
 webencodings==0.5.1
 whitenoise==4.1
-Willow==1.0
+Willow==1.1
