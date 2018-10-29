@@ -30,7 +30,7 @@ psycopg2==2.7.5
 pyparsing==2.2.2
 python-dateutil==2.7.5
 python-http-client==3.1.0
-pytz==2017.2
+pytz==2018.7
 rcssmin==1.0.6
 requests==2.18.4
 rjsmin==1.0.12
