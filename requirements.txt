@@ -15,7 +15,7 @@ django-treebeard==4.3
 django-widget-tweaks==1.4.3
 djangorestframework==3.9.0
 docutils==0.14
-draftjs-exporter==2.1.2
+draftjs-exporter==2.1.4
 gevent==1.2.2
 greenlet==0.4.12
 gunicorn==19.7.1
