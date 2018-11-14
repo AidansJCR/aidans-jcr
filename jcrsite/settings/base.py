@@ -28,7 +28,7 @@ WAGTAIL_FRONTEND_LOGIN_URL = '/login/'
 # See https://docs.djangoproject.com/en/1.10/howto/deployment/checklist/
 
 
-ALLOWED_HOSTS = [".st-aidans.com","st-aidans.com",".herokuapp.com", "localhost", "127.0.0.1"]
+ALLOWED_HOSTS = [".st-aidans.com","st-aidans.com",".herokuapp.com", "localhost", "127.0.0.1", "0.0.0.0"]
 # Application definition
 
 INSTALLED_APPS = [
