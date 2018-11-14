@@ -9,9 +9,9 @@ wagtail = "*"
 gunicorn = "*"
 wagtailmenus = "*"
 whitenoise = "*"
+dj-database-url = "*"
 django-widget-tweaks = "*"
 django-storages = "*"
-dj-database-url = "*"
 
 [dev-packages]
 
