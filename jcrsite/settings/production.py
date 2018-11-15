@@ -4,7 +4,7 @@ from .base import *
 import dj_database_url
 import os
 
-DEBUG = False
+DEBUG = os.environ['DEBUG']
 
 db_from_env = dj_database_url.config(conn_max_age=500)
 if db_from_env:
@@ -26,7 +26,7 @@ if db_from_env:
     AWS_HEADERS = {
         'Cache-Control': 'max-age=86400',
     }
-    
+
     # SendGrid
     EMAIL_HOST = 'smtp.sendgrid.net'
     EMAIL_HOST_USER = os.environ['SENDGRID_USERNAME']
