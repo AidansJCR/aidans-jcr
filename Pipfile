@@ -12,6 +12,7 @@ whitenoise = "*"
 dj-database-url = "*"
 django-widget-tweaks = "*"
 django-storages = "*"
+"psycopg2" = "*"
 
 [dev-packages]
 
