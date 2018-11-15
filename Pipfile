@@ -13,6 +13,7 @@ django-widget-tweaks = "*"
 django-storages = "*"
 "psycopg2" = "*"
 wagtailmenus = {version = "==2.11"}
+"boto3" = "*"
 
 [dev-packages]
 
