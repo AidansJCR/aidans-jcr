@@ -4,7 +4,7 @@ from .base import *
 import dj_database_url
 import os
 
-DEBUG = os.environ['DEBUG']
+
 
 db_from_env = dj_database_url.config(conn_max_age=500)
 if db_from_env:
@@ -33,6 +33,8 @@ if db_from_env:
     EMAIL_HOST_PASSWORD = os.environ['SENDGRID_PASSWORD']
     EMAIL_PORT = 587
     EMAIL_USE_TLS = True
+
+    DEBUG = os.environ['DEBUG']
 
     # SECURITY WARNING: keep the secret key used in production secret!
     SECRET_KEY = os.environ['DJANGO_SECRET_KEY']
