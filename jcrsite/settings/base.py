@@ -38,6 +38,7 @@ INSTALLED_APPS = [
     'forms',
     'gallery',
     'aidansadmintheme',
+    'cisauth',
     'wagtail.contrib.forms',
     'wagtail.contrib.redirects',
     'wagtail.embeds',

@@ -9,7 +9,7 @@ import time
 
 
 class CISBackend(object):
-    def authenticate(self,username=None,password=None):
+    def authenticate(self,request,username=None,password=None):
         """Authenticate with the Durham backend, to check username and password"""
         # TODO: ideally check they are a member of Aidan's. In practice, this is more challenging.
         # see if the user is valid on the Durham server
