@@ -2,6 +2,8 @@
 /*.carousel,.item,.active{height:100%;}*/
 /*.carousel-inner{height:100%;}*/
 
+/* This is the stylesheet that is used by templates in the home app */
+
 /* Override Bootstrap Container Sizes */
 @media (min-width: 2400px) {
   .container {
@@ -87,6 +89,11 @@ footer {
 footer a {
   color: turquoise;
 }
+
+/* .carousel-caption{
+  background: rgb(0, 0, 0);
+  background: rgba(0, 0, 0, 0.6);
+} */
 
 .carousel-img-custom {
   height: auto !important;
