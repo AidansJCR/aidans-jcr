@@ -1,0 +1,28 @@
+{% extends "base.html" %}
+{% load wagtailcore_tags wagtailimages_tags static menu_tags custom_tags %}
+{% block body_class %}template-generic{% endblock %}
+
+{% block content %}
+
+  <div class="container">
+    <!-- Loop this for each day of the week -->
+    <div class="row" style="border-style:solid;">
+      <h4>Monday</h4>
+
+      <div class="col-md-6 text-center" style="border-style:solid;">
+        <!-- Get the list of lunch mains and loop through them here -->
+        <h5>Lunch</h5>
+        <p>
+          {{ myList|serveryItems: }}
+        </p>
+      </div>
+
+      <div class="col-md-4 offset-2">
+        <h5>Dinner</h5>
+        <p>Potatoes</p>
+      </div>
+
+    </div>
+  </div>
+
+{% endblock %}
