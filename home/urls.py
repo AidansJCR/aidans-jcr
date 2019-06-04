@@ -14,15 +14,12 @@ from django.contrib.auth import views as auth_views
 from home import views as home_views
 
 urlpatterns = [
-    url(r'^app/', include('home.urls')),
-    url(r'^login/$', auth_views.LoginView.as_view(), name='login'),
-    url(r'^logout/$', auth_views.LogoutView.as_view(), name='logout'),
-    url(r'^django-admin/', admin.site.urls),
-    url(r'^admin/', include(wagtailadmin_urls)),
-    url(r'^documents/', include(wagtaildocs_urls)),
-    url(r'^search/$', search_views.search, name='search'),
-    url(r'^sitemap\.xml$', sitemap),
-    url(r'', include(wagtail_urls)),
+    #The app url patterns
+    url(r'^login', home_views.app_login),
+    url(r'^logout', home_views.app_logout),
+    url(r'^announcements', home_views.app_announcements_page),
+    url(r'^schedule', home_views.app_schedule_page),
+    url(r'', home_views.app_home_page),
 ]
 
 

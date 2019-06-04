@@ -240,3 +240,12 @@ class MainPageCarouselImage(Orderable):
         FieldPanel('description'),
         FieldPanel('primary'),
     ]
+
+
+class AppAnnouncement(models.Model):
+    title = models.CharField(max_length=200)
+    message = models.TextField()
+    time_set = models.TimeField()
+    image = models.ForeignKey(
+        'wagtailimages.Image', on_delete=models.CASCADE, related_name='+'
+    )
