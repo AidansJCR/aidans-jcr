@@ -1,0 +1,63 @@
+{% extends "base.html" %}
+{% load wagtailcore_tags wagtailimages_tags static %}
+
+{% block content %}
+
+
+<div class="container">
+  <div class="row">
+
+    <h3>Announcements</h3>
+
+    <div style="border-style:solid;border-color:blue;">
+      <h4>Make an announcement</h4>
+      <form method="post" action="/app/announcements">
+        {% csrf_token %}
+
+        <table>
+          <tr>
+            <td>Title</td>
+            <td><input type="text" name="title" /></td>
+          </tr>
+
+          <tr>
+            <td>Message</td>
+            <td><input type="text" name="message" /></td>
+          </tr>
+
+          <tr>
+            <td>Upload an image</td>
+            <td><input type="file" name="fileToUpload" id="fileToUpload"></td>
+          </tr>
+        </table>
+
+        <input type="submit" value="Post" />
+        <input type="hidden" name="next" value="{{ next }}" />
+      </form>
+    </div>
+
+    <div style="border-style:solid;border-color:green;">
+      <h4>Past Announcements</h4>
+      <p>{{ announcements }}</p>
+        <!-- Put the past announcements here -->
+          {% for announcement in announcements %}
+
+            <div>
+              <h6>{{ announcement.title }}</h6>
+              <p>{{ announcement.message }}</p>
+              <img src="{{ announcement.image }}"/>
+
+              <form method="post" action="/app/announcements">
+                <input type="submit" value="Delete" />
+                <input type="hidden" name="announcementId" value="{{ announcement.pk }}"/>
+              </form>
+            </div>
+
+          {% endfor %}
+    </div>
+
+  </div>
+</div>
+
+
+{% endblock %}

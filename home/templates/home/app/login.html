@@ -1,0 +1,35 @@
+{% extends "base.html" %}
+{% load wagtailcore_tags wagtailimages_tags static %}
+
+{% block content %}
+
+
+<div class="container">
+  <div class="row">
+
+    <h3>Admin Section Login Required</h3>
+
+    <form method="post" action="/app/login">
+      {% csrf_token %}
+      <table>
+
+        <tr>
+          <td>Username</td>
+          <td><input type="text" name="username" /></td>
+        </tr>
+
+        <tr>
+          <td>Password</td>
+          <td><input type="text" name="password" /></td>
+        </tr>
+      </table>
+
+      <input type="submit" value="login" />
+      <input type="hidden" name="next" value="{{ next }}" />
+    </form>
+
+  </div>
+</div>
+
+
+{% endblock %}

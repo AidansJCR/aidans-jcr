@@ -466,3 +466,13 @@ figure.snip1165.hover img {
   -webkit-transform: scale(1.1);
   transform: scale(1.1);
 }
+
+
+
+
+/* ----------  This section is for the app ---------- */
+
+#taAnnouncement{
+  width: 45em;
+  height: auto;
+}
