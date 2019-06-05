@@ -1,4 +1,4 @@
-from django.http import Http404
+from django.http import Http404, JsonResponse
 from django.shortcuts import render, redirect
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.decorators import login_required
@@ -10,12 +10,6 @@ import datetime
 @login_required(login_url='/app/login')
 def app_home_page(request):
     return render(request, 'home/app/home_page.html')
-
-
-@login_required(login_url='/app/login')
-def app_announcements_page(request):
-    announcements = AppAnnouncement.objects.all()
-    return render(request, 'home/app/announcements.html', {'announcements':announcements})
 
 
 @login_required(login_url='/app/login')
@@ -47,12 +41,23 @@ def app_logout(request):
     return redirect('/app/login')
 
 
+@login_required(login_url='/app/login')
 def app_announcements(request):
-    if request.method == 'GET':
-        #Return all of the announcements (should probably limit this to 24hrs at some point)
-        return AppAnnouncement.objects.all()
-    elif request.method == 'POST':
-        p = AppAnnouncement(title=request.POST['title'], message=request.POST['message'], image=request.POST['image'], time_set=datetime.datetime.now())
-        p.save()
-        announcements = [p]
-        return redirect('home/app/announcements.html', {'announcements':announcements})
+    if request.method == 'POST':
+        if request.POST['function'] == 'upload':
+            #If the user is uploading an announcement
+            announcement = AppAnnouncement(title=request.POST['title'], message=request.POST['message'], image=request.FILES['image'], time_set=datetime.datetime.now())
+            announcement.save()
+        elif request.POST['function'] == 'delete':
+            #If the user is removing an announcement
+            AppAnnouncement.objects.get(pk=request.POST['announcementId']).delete()
+        return redirect('home/app/announcements')
+    elif request.method == 'GET':
+        announcements = AppAnnouncement.objects.all()
+        return render(request, 'home/app/announcements.html', {'announcements':announcements})
+    return null
+
+
+def app_get_announcements(request):
+    #Send back the announcements in a json format
+    return JsonResponse([{'title':'Hello world!'}], safe=False)
