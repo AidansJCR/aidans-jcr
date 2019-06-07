@@ -3,7 +3,7 @@ from django.shortcuts import render, redirect
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.decorators import login_required
 
-from home.models import AppAnnouncement
+from home.models import AppAnnouncement, AppEvent
 import datetime
 
 
@@ -54,9 +54,10 @@ def app_announcements(request):
 
 
 def app_get_announcements(request):
-    #Send back the announcements in a json format
-    announcements = list(AppAnnouncement.objects.all().values())
-    return JsonResponse(announcements, safe=False)
+    if request.method == 'GET':
+        #Send back the announcements in a json format
+        announcements = list(AppAnnouncement.objects.all().values())
+        return JsonResponse(announcements, safe=False)
 
 
 @login_required(login_url='/app/login')
@@ -64,13 +65,19 @@ def app_schedule(request):
     if request.method == 'POST':
         if request.POST['function'] == 'upload':
             #If the user is uploading an announcement
-            announcement = AppAnnouncement(title=request.POST['title'], message=request.POST['message'], image=request.FILES['image'], time_set=datetime.datetime.now())
-            announcement.save()
+            event = AppEvent(title=request.POST['title'], location=request.POST['location'], start_time=request.POST['start_time'], description=request.POST['description'])
+            event.save()
         elif request.POST['function'] == 'delete':
             #If the user is removing an announcement
-            AppAnnouncement.objects.get(pk=request.POST['announcementId']).delete()
-        return redirect('home/app/announcements')
+            AppEvent.objects.get(pk=request.POST['eventId']).delete()
+        return redirect('home/app/schedule')
     elif request.method == 'GET':
-        announcements = AppAnnouncement.objects.all()
-        return render(request, 'home/app/announcements.html', {'announcements':announcements})
+        events = AppEvent.objects.all()
+        return render(request, 'home/app/schedule.html', {'events':events})
     return null
+
+
+def app_get_schedule(request):
+    if request.method = 'GET':
+        events = list(AppEvent.objects.order_by('start_time').values())
+        return JsonResponse(events, safe=False)

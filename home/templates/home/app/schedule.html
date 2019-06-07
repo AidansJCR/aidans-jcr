@@ -52,7 +52,7 @@
                 {% csrf_token %}
                 <input type="submit" value="Delete" />
                 <input type="hidden" name="function" value="delete"/>
-                <input type="hidden" name="announcementId" value="{{ announcement.pk }}"/>
+                <input type="hidden" name="eventId" value="{{ event.pk }}"/>
               </form>
             </div>
 
