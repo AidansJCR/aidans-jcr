@@ -46,7 +46,7 @@ def app_announcements(request):
         elif request.POST['function'] == 'delete':
             #If the user is removing an announcement
             AppAnnouncement.objects.get(pk=request.POST['announcementId']).delete()
-        return redirect('home/app/announcements')
+        return redirect('/app/announcements')
     elif request.method == 'GET':
         announcements = AppAnnouncement.objects.all()
         return render(request, 'home/app/announcements.html', {'announcements':announcements})
@@ -55,7 +55,8 @@ def app_announcements(request):
 
 def app_get_announcements(request):
     #Send back the announcements in a json format
-    return JsonResponse([{'title':'Hello world!'}], safe=False)
+    announcements = list(AppAnnouncement.objects.all().values())
+    return JsonResponse(announcements, safe=False)
 
 
 @login_required(login_url='/app/login')
