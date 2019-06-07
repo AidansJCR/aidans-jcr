@@ -22,7 +22,16 @@
           <td>Password</td>
           <td><input type="text" name="password" /></td>
         </tr>
+
+        {% if error != '' %}
+          <tr>
+            <td>
+              <p>{{ error }}</p>
+            </td>
+          </tr>
+        {% endif %}
       </table>
+
 
       <input type="submit" value="login" />
       <input type="hidden" name="next" value="{{ next }}" />

@@ -252,5 +252,6 @@ class AppAnnouncement(models.Model):
 class AppEvent(models.Model):
     title = models.CharField(max_length=200)
     location = models.CharField(max_length=200)
-    description = models.TextField()
     start_time = models.TimeField()
+    end_time = models.TimeField()
+    description = models.TextField()

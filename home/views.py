@@ -15,7 +15,7 @@ def app_home_page(request):
 def app_login(request):
     if request.method == 'GET':
         #They are requesting the login page
-        return render(request, 'home/app/login.html')
+        return render(request, 'home/app/login.html', {'error':''})
     elif request.method == 'POST':
         #They are sending us some data to try and login
         username = request.POST['username']
@@ -25,7 +25,7 @@ def app_login(request):
             login(request, user)
             return redirect('/app')
         else:
-            return null
+            return render(request, 'home/app/login.html', {'error':'Incorrect login'})
     else:
         #They are trying to do something weird
         return null
@@ -56,7 +56,7 @@ def app_announcements(request):
 def app_get_announcements(request):
     if request.method == 'GET':
         #Send back the announcements in a json format
-        announcements = list(AppAnnouncement.objects.all().values())
+        announcements = list(AppAnnouncement.objects.order_by('time_set').values())
         return JsonResponse(announcements, safe=False)
 
 
@@ -78,6 +78,6 @@ def app_schedule(request):
 
 
 def app_get_schedule(request):
-    if request.method = 'GET':
+    if request.method == 'GET':
         events = list(AppEvent.objects.order_by('start_time').values())
         return JsonResponse(events, safe=False)

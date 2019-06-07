@@ -7,60 +7,101 @@
 <div class="container">
   <div class="row">
 
-    <h3>Announcements</h3>
+    <h3>Schedule</h3>
 
     <div style="border-style:solid;border-color:blue;">
-      <h4>Make an announcement</h4>
+      <h4>Add an event</h4>
       <form method="post" action="/app/schedule" enctype="multipart/form-data">
         {% csrf_token %}
 
         <table>
           <tr>
             <td>Title</td>
-            <td><input type="text" name="title" /></td>
+            <td><input type="text" name="title" required /></td>
           </tr>
+
+          <tr>
+            <td>Location</td>
+            <td><input type="text" name="location" required /></td>
+          </tr>
+
+            <div class='col-md-5'>
+              <div class="form-group">
+                <div class='input-group date' id='datetimepicker1'>
+                  <input type='text' class="form-control" name="start-time"/>
+                  <span class="input-group-addon">
+                    <span class="glyphicon glyphicon-calendar"></span>
+                  </span>
+                </div>
+              </div>
+            </div>
+            <div class='col-md-5'>
+              <div class="form-group">
+                <div class='input-group date' id='datetimepicker2'>
+                  <input type='text' class="form-control" name="end-time"/>
+                  <span class="input-group-addon">
+                    <span class="glyphicon glyphicon-calendar"></span>
+                  </span>
+                </div>
+              </div>
+            </div>
 
           <tr>
             <td>Description</td>
             <td><input type="text" name="description" /></td>
           </tr>
-
-          <tr>
-            <td>Event start</td>
-            <td><input type="datetime-local" name="event-start"></td>
-          </tr>
         </table>
 
         <input type="submit" value="Post" />
-        <input type="hidden" name="function" value="upload"/>
+        <input type="hidden" name="function" value="upload" />
         <input type="hidden" name="next" value="{{ next }}" />
       </form>
     </div>
 
     <div style="border-style:solid;border-color:green;">
       <h4>Current Events</h4>
-        <!-- Put the past announcements here -->
-          {% for event in events %}
+      <!-- Put the past announcements here -->
+      {% for event in events %}
 
-            <div>
-              <h6>{{ event.title }}</h6>
-              <p>{{ event.location }}</p>
-              <p>{{ event.start_time }}</p>
-              <p>{{ event.description }}</p>
+      <div>
+        <h6>{{ event.title }}</h6>
+        <p>{{ event.location }}</p>
+        <div class="row">
+          <p>{{ event.start_time }}</p>
+          <p>{{ event.end_time }}</p>
+        </div>
+        <p>{{ event.description }}</p>
 
-              <form method="post" action="/app/schedule">
-                {% csrf_token %}
-                <input type="submit" value="Delete" />
-                <input type="hidden" name="function" value="delete"/>
-                <input type="hidden" name="eventId" value="{{ event.pk }}"/>
-              </form>
-            </div>
+        <form method="post" action="/app/schedule">
+          {% csrf_token %}
+          <input type="submit" value="Delete" />
+          <input type="hidden" name="function" value="delete" />
+          <input type="hidden" name="eventId" value="{{ event.pk }}" />
+        </form>
+      </div>
 
-          {% endfor %}
+      {% endfor %}
     </div>
 
   </div>
 </div>
 
+
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<script type="text/javascript">
+  $(function() {
+    $('#datetimepicker1').datetimepicker();
+    $('#datetimepicker2').datetimepicker({
+      useCurrent: false //Important! See issue #1075
+    });
+    $("#datetimepicker1").on("dp.change", function(e) {
+      $('#datetimepicker2').data("DateTimePicker").minDate(e.date);
+    });
+    $("#datetimepicker2").on("dp.change", function(e) {
+      $('#datetimepicker1').data("DateTimePicker").maxDate(e.date);
+    });
+  });
+</script>
 
 {% endblock %}
