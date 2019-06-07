@@ -19,7 +19,8 @@ urlpatterns = [
     url(r'^logout', home_views.app_logout),
     url(r'^announcements', home_views.app_announcements),
     url(r'^getannouncements', home_views.app_get_announcements),
-    url(r'^schedule', home_views.app_schedule_page),
+    url(r'^schedule', home_views.app_schedule),
+    url(r'^getschedule', home_views.app_get_schedule),
     url(r'', home_views.app_home_page),
 ]
 

@@ -1,0 +1,66 @@
+{% extends "base.html" %}
+{% load wagtailcore_tags wagtailimages_tags static %}
+
+{% block content %}
+
+
+<div class="container">
+  <div class="row">
+
+    <h3>Announcements</h3>
+
+    <div style="border-style:solid;border-color:blue;">
+      <h4>Make an announcement</h4>
+      <form method="post" action="/app/schedule" enctype="multipart/form-data">
+        {% csrf_token %}
+
+        <table>
+          <tr>
+            <td>Title</td>
+            <td><input type="text" name="title" /></td>
+          </tr>
+
+          <tr>
+            <td>Description</td>
+            <td><input type="text" name="description" /></td>
+          </tr>
+
+          <tr>
+            <td>Event start</td>
+            <td><input type="datetime-local" name="event-start"></td>
+          </tr>
+        </table>
+
+        <input type="submit" value="Post" />
+        <input type="hidden" name="function" value="upload"/>
+        <input type="hidden" name="next" value="{{ next }}" />
+      </form>
+    </div>
+
+    <div style="border-style:solid;border-color:green;">
+      <h4>Current Events</h4>
+        <!-- Put the past announcements here -->
+          {% for event in events %}
+
+            <div>
+              <h6>{{ event.title }}</h6>
+              <p>{{ event.location }}</p>
+              <p>{{ event.start_time }}</p>
+              <p>{{ event.description }}</p>
+
+              <form method="post" action="/app/schedule">
+                {% csrf_token %}
+                <input type="submit" value="Delete" />
+                <input type="hidden" name="function" value="delete"/>
+                <input type="hidden" name="announcementId" value="{{ announcement.pk }}"/>
+              </form>
+            </div>
+
+          {% endfor %}
+    </div>
+
+  </div>
+</div>
+
+
+{% endblock %}

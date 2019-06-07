@@ -247,3 +247,10 @@ class AppAnnouncement(models.Model):
     message = models.TextField()
     time_set = models.TimeField()
     image = models.ImageField()
+
+
+class AppEvent(models.Model):
+    title = models.CharField(max_length=200)
+    location = models.CharField(max_length=200)
+    description = models.TextField()
+    start_time = models.TimeField()
