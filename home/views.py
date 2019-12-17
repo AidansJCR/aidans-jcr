@@ -81,3 +81,9 @@ def app_get_schedule(request):
     if request.method == 'GET':
         events = list(AppEvent.objects.order_by('start_time').values())
         return JsonResponse(events, safe=False)
+
+
+def get_events(request):
+    if request.method == 'GET':
+
+        return None
