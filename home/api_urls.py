@@ -15,13 +15,7 @@ from home import views as home_views
 
 urlpatterns = [
     #The api url patterns
-    path('login', home_views.app_login),
-    path('logout', home_views.app_logout),
-    path('announcements', home_views.app_announcements),
-    path('getannouncements', home_views.app_get_announcements),
-    path('schedule', home_views.app_schedule),
-    path('getschedule', home_views.app_get_schedule),
-    path('', home_views.app_home_page),
+    path('getevents', home_views.get_events),
 ]
 
 

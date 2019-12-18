@@ -31,7 +31,7 @@ def app_login(request):
             return render(request, 'home/app/login.html', {'error':'Incorrect login'})
     else:
         #They are trying to do something weird
-        return null
+        return None
 
 
 def app_logout(request):
@@ -53,7 +53,7 @@ def app_announcements(request):
     elif request.method == 'GET':
         announcements = AppAnnouncement.objects.all()
         return render(request, 'home/app/announcements.html', {'announcements':announcements})
-    return null
+    return None
 
 
 def app_get_announcements(request):
@@ -77,7 +77,7 @@ def app_schedule(request):
     elif request.method == 'GET':
         events = AppEvent.objects.all()
         return render(request, 'home/app/schedule.html', {'events':events})
-    return null
+    return None
 
 
 def app_get_schedule(request):
