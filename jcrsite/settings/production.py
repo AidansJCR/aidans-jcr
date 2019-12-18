@@ -48,7 +48,7 @@ if db_from_env:
     STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 
     # Load in the JCR DATABASE
-    DATABASES['jcrdata'] = {
+    DATABASES['jcrdb'] = {
         'ENGINE': 'django.db.backends.postgresql',
         'NAME': os.environ['AWS_JCR_DATA_NAME'],
         'HOST': os.environ['AWS_JCR_DATA_HOST'],

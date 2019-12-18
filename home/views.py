@@ -2,9 +2,12 @@ from django.http import Http404, JsonResponse
 from django.shortcuts import render, redirect
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.decorators import login_required
+from django.db import connections
+from flask import jsonify
 
 from home.models import AppAnnouncement, Event
 import datetime
+import json
 
 
 @login_required(login_url='/app/login')
@@ -85,5 +88,12 @@ def app_get_schedule(request):
 
 def get_events(request):
     if request.method == 'GET':
-
-        return None
+            with connections['jcrdb'].cursor() as cursor:
+                cursor.execute('SELECT * FROM events WHERE end_date <= %s', datetime.now())
+                result = cursor.fetchall()
+                response = []
+                for row in result:
+                    reponse.append({'eventId':row[0],'title':row[1],'description':row[2],'startTime':row[3],'endTime':row[4],'location':row[5],
+                    'cost':row[6],'imageUrl':row[7]})
+                return jsonify(response)
+    return None

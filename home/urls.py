@@ -14,13 +14,14 @@ from django.contrib.auth import views as auth_views
 from home import views as home_views
 
 urlpatterns = [
-    #The app url patterns
+    #The api url patterns
     url(r'^login', home_views.app_login),
     url(r'^logout', home_views.app_logout),
     url(r'^announcements', home_views.app_announcements),
     url(r'^getannouncements', home_views.app_get_announcements),
     url(r'^schedule', home_views.app_schedule),
     url(r'^getschedule', home_views.app_get_schedule),
+    url(r'api/getEvents', home_views.get_events),
     url(r'', home_views.app_home_page),
 ]
 
