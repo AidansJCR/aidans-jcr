@@ -249,9 +249,12 @@ class AppAnnouncement(models.Model):
     image = models.ImageField()
 
 
-class AppEvent(models.Model):
+class Event(models.Model):
+    event_id = models.IntegerField()
     title = models.CharField(max_length=200)
-    location = models.CharField(max_length=200)
-    start_time = models.TimeField()
-    end_time = models.TimeField()
     description = models.TextField()
+    location = models.CharField(max_length=200)
+    start_time = models.DateTimeField()
+    end_time = models.DateTimeField()
+    cost = models.DecimalField(max_digits=5 ,decimal_places=2)
+    image_url = models.URLField()

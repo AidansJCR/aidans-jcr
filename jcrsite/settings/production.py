@@ -47,6 +47,16 @@ if db_from_env:
     # Static file compression and caching
     STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 
+    # Load in the JCR DATABASE
+    DATABASES['jcrdata'] = {
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': os.environ['AWS_JCR_DATA_NAME'],
+        'HOST': os.environ['AWS_JCR_DATA_HOST'],
+        'PORT': os.environ['AWS_JCR_DATA_PORT'],
+        'USER': os.environ['AWS_JCR_DATA_USER'],
+        'PASSWORD': os.environ['AWS_JCR_DATA_USER']
+    }
+
 try:
     from .local import *
 except ImportError:
