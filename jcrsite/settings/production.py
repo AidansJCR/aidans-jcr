@@ -53,7 +53,7 @@ if db_from_env:
         'HOST': os.environ['AWS_JCR_DATA_HOST'],
         'PORT': os.environ['AWS_JCR_DATA_PORT'],
         'USER': os.environ['AWS_JCR_DATA_USER'],
-        'PASSWORD': os.environ['AWS_JCR_DATA_USER']
+        'PASSWORD': os.environ['AWS_JCR_DATA_PASS']
     }
 
 try:
