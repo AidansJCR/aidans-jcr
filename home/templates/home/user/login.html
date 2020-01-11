@@ -1,4 +1,4 @@
-{% extends "base.html" %}
+{% extends "home/user/user_base.html" %}
 {% load wagtailcore_tags wagtailimages_tags static %}
 
 {% block content %}
@@ -9,7 +9,7 @@
 
     <h3>Admin Section Login Required</h3>
 
-    <form method="post" action="/app/login">
+    <form method="post" action="/user/login/">
       {% csrf_token %}
       <table>
 
