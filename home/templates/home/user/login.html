@@ -9,7 +9,7 @@
 
     <h3>Admin Section Login Required</h3>
 
-    <form method="post" action="/user/login/">
+    <form method="post" action="/user/login">
       {% csrf_token %}
       <table>
 
@@ -20,7 +20,7 @@
 
         <tr>
           <td>Password</td>
-          <td><input type="text" name="password" /></td>
+          <td><input type="password" name="password" /></td>
         </tr>
 
         {% if error != '' %}

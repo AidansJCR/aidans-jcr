@@ -50,9 +50,7 @@
     </head>
     <body class="{% block body_class %}{% endblock %}">
         {% wagtailuserbar %}
-        {% block menu %}
-          {% main_menu %}
-        {% endblock %}
+        {% include "home/user/menus/main_menu.html" %}
         {% block content %}
         {% endblock %}
         {% include 'footer.html' %}

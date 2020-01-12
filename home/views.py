@@ -14,7 +14,7 @@ def home_page(request):
     return render(request, 'home/user/home.html')
 
 
-def login(request):
+def user_login(request):
     if request.method == 'GET':
         #They are requesting the login page
         return render(request, 'home/user/login.html', {'error':''})
@@ -33,7 +33,7 @@ def login(request):
         return None
 
 
-def logout(request):
+def user_logout(request):
     logout(request)
     return redirect('/user/login')
 
@@ -95,4 +95,30 @@ def get_events(request):
                 reponse.append({'eventId':row[0],'title':row[1],'description':row[2],'startTime':row[3],'endTime':row[4],'location':row[5],
                 'cost':row[6],'imageUrl':row[7]})
             return JsonResponse(response, safe=False)
+    return None
+
+
+@login_required(login_url='/user/login')
+def chat_setup(request):
+    if request.method == 'GET':
+        with connections['jcrdb'].cursor() as cursor:
+            cursor.execute("INSERT INTO conversations (subject, clientid, clientname, welfareid) VALUES (%s, %s, %s, %s);",
+            [request.POST['subject'], request.POST['clientid'], request.POST['clientname'], request.POST['welfareid']])
+            result = cursor.fetchall()
+            response = []
+            for row in result:
+        return render(request, 'home/user/chat_setup.html')
+    elif request.method == 'POST':
+        # Need to make some sort of restriction on this to avoid spam
+        cursor.execute("INSERT INTO conversations (subject, clientid, clientname, welfareid) VALUES (%s, %s, %s, %s);",
+        [request.POST['subject'], request.POST['clientid'], request.POST['clientname'], request.POST['welfareid']])
+        return None
+
+
+@login_required(login_url='/user/login')
+def chat(request):
+    if request.method == 'GET':
+        with connections['jcrdb'].cursor() as cursor:
+            cursor.execute("SELECT * FROM messages WHERE convid=%s", [request.POST['convid']])
+            result = cursor.fetchall()
     return None
