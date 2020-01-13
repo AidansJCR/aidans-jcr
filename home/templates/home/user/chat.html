@@ -1,0 +1,38 @@
+{% extends "home/user/user_base.html" %}
+{% load wagtailcore_tags wagtailimages_tags static %}
+{% block body_class %}template-homepage{% endblock %}
+{% block content %}
+<div class="page-container">
+
+<div class="container">
+  <p>Welcome user</p>
+</div>
+
+{% if page.show_blog_posts %}
+<div class="container">
+    <div class="row">
+      <h2>Latest News</h2>
+    </div>
+    <div class="row">
+
+        {% for blogpost in blog_posts.all %}
+            <figure class="snip1529">
+              {% image blogpost.feed_image height-200 class="blog-thumbnail"%}
+              <div class="date">
+                  <span class="day">{{blogpost.first_published_at|date:"d"}}</span>
+                  <span class="month">{{blogpost.first_published_at|date:"M"}}</span>
+              </div>
+              <figcaption>
+
+                  <h4>{{ blogpost.title }}</h4>
+                  <p>{{blogpost.search_description | richtext}}</p>
+                  <a href="{% pageurl blogpost %}"></a>
+              </figcaption>
+            </figure>
+        {% endfor %}
+
+    </div>
+</div>
+{% endif %}
+</div>
+{% endblock %}
