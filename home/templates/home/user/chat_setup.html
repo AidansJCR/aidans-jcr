@@ -1,0 +1,52 @@
+{% extends "home/user/user_base.html" %}
+{% load wagtailcore_tags wagtailimages_tags static %}
+{% block body_class %}template-homepage{% endblock %}
+{% block content %}
+<div class="page-container">
+
+  <div class="container">
+    <p>Welcome user</p>
+  </div>
+
+  <div class="container">
+    <div class="row">
+      <form method="POST" action="/user/newchat">
+        <p>Start a new chat</p>
+
+        <div class="row">
+          <div class="col-8">
+            <input type="text" name="username" id="inp_username" />
+          </div>
+          <div class="col-4">
+            <button id="btn_rnd_username">Randomise</button>
+          </div>
+        </div>
+
+        <select id="sel_welfare"></select>
+        <input type="submit" value="Start Chatting" />
+      </form>
+    </div>
+
+    <div class="row">
+      <h2>Current Conversations</h2>
+    </div>
+    <div class="row">
+      {# For loop to display current conversations showing subject, the name they used and the name of who they're talking to #}
+
+      {# Chat item template #}
+      <div class="container">
+        <p>Subject</p>
+        <div class="row">
+          <div class="col">
+            <p>Client username</p>
+          </div>
+          <div class="col">
+            <p>Welfare username</p>
+          </div>
+        </div>
+      </div>
+      
+    </div>
+  </div>
+</div>
+{% endblock %}

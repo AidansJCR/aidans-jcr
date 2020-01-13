@@ -1,0 +1,24 @@
+{% extends "home/user/user_base.html" %}
+{% load wagtailcore_tags wagtailimages_tags static %}
+{% block body_class %}template-homepage{% endblock %}
+{% block content %}
+<div class="page-container">
+
+  <div class="container">
+    <p>Welcome user</p>
+  </div>
+
+  <div class="container">
+    <div class="row">
+      <div id="recv-msgs" class="col-6">
+      </div>
+
+      <div id="sent-msgs" class="col-6">
+      </div>
+    </div>
+    <div class="row">
+
+    </div>
+  </div>
+</div>
+{% endblock %}
