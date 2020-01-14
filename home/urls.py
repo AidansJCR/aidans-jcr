@@ -22,6 +22,7 @@ urlpatterns = [
     path('schedule', home_views.schedule),
     path('getschedule', home_views.get_schedule),
     path('chat', home_views.schedule),
+    path('getmessages', home_views.get_chat_msgs),
     path('booking', home_views.schedule),
     path('', home_views.home_page),
 ]

@@ -9,16 +9,42 @@
   </div>
 
   <div class="container">
-    <div class="row">
-      <div id="recv-msgs" class="col-6">
-      </div>
+    <div id="msgs" class="row">
+      <div class="col">
 
-      <div id="sent-msgs" class="col-6">
+          {# Message template #}
+          {# Align it on different sides based on who sent it #}
+          <div id="[MESSAGE_ID]" class="row">
+            <div class="{% if sent_locally %}col-md-offset-4{% endif %} col-md-8">
+              <p>Name Here</p>
+              <p>Message content here</p>
+              </div>
+            </div>
+
       </div>
     </div>
-    <div class="row">
 
+    <div id="msg-container" class="row">
+      <form method="POST" action="/user/chat">
+        <input type="text" name="msg-content"/>
+        <input type="submit" value="&#x23ce;"/>
+      </form>
     </div>
   </div>
 </div>
+{% endblock %}
+
+{% block extra_js %}
+<script>
+    setInterval(function() {
+        $.ajax({
+            type: "GET",
+            url: "/user/getmessages",  // URL to your view that serves new info
+            data: {'append_increment': append_increment}
+        })
+        .done(function(response) {
+            $('#_appendHere').append(response);
+        });
+    }, 10000)
+  </script>
 {% endblock %}

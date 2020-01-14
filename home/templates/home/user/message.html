@@ -1,0 +1,11 @@
+{# Message template #}
+{# Align it on different sides based on who sent it #}
+{% for msg in msgs %}
+<div id="{msg.msgid}" class="row">
+  <div class="{% if msg.sender==sender %}col-md-offset-4{% endif %} col-md-8">
+    {# Can't directly output sender incase they don't want to use their name #}
+    <p>{{msg.sender}}</p>
+    <p>{{msg.message}}</p>
+  </div>
+</div>
+{% endfor %}
