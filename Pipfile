@@ -11,10 +11,10 @@ whitenoise = "*"
 dj-database-url = "*"
 django-widget-tweaks = "*"
 django-storages = "*"
-wagtailmenus = {version = "==2.11"}
 "boto3" = "*"
 psycopg2-binary = "*"
 django-environ = "*"
+wagtailmenus = "*"
 
 [dev-packages]
 
