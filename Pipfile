@@ -5,7 +5,6 @@ name = "pypi"
 
 [packages]
 django = "*"
-wagtail = "*"
 gunicorn = "*"
 whitenoise = "*"
 dj-database-url = "*"
@@ -15,6 +14,7 @@ django-storages = "*"
 psycopg2-binary = "*"
 django-environ = "*"
 wagtailmenus = "*"
+wagtail = "*"
 
 [dev-packages]
 
