@@ -12,5 +12,10 @@
     <p class="text">
         {{ page.body|richtext}}
     </p>
+
+    {% for block in page.sections %}
+      {% include_block block with block_id=block.id %}
+    {% endfor %}
+
 </div>
 {% endblock %}
