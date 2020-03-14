@@ -12,6 +12,7 @@ from wagtail.core.models import Page, Orderable
 from wagtail.images.edit_handlers import ImageChooserPanel
 from wagtail.search import index
 from wagtail.documents.blocks import DocumentChooserBlock
+from wagtail.core import blocks
 from home.blocks import LinkedButtonBlock, SectionBlock
 
 class BlogPage(MenuPage):
@@ -49,6 +50,7 @@ class GenericPage(MenuPage):
     body = RichTextField(blank=True)
 
     sections = StreamField([
+        ('text', blocks.RichTextBlock(blank=True)),
         ('sections', SectionBlock())
         ], null=True, blank=True)
 

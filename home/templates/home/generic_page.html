@@ -9,12 +9,18 @@
         <h1 class="display1">{{page.title}}</h1>
         <h2 class="subtitle">{{page.subtitle}}</h2>
     </div>
+    {% if page.body %}
     <p class="text">
-        {{ page.body|richtext}}
+        {{ page.body|richtext }}
     </p>
+    {% endif %}
 
     {% for block in page.sections %}
-      {% include_block block with block_id=block.id %}
+      {% if block.block_type == "sections" %}
+        {% include_block block with block_id=block.id %}
+      {% else %}
+        {{ block }}
+      {% endif %}
     {% endfor %}
 
 </div>
