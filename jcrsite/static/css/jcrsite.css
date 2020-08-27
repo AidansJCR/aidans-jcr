@@ -467,7 +467,17 @@ figure.snip1165.hover img {
   transform: scale(1.1);
 }
 
-
+.d-flex {
+    display:flex;
+}
+.d-flex>div {
+    float: none;
+}
+.col-auto {
+    flex: 0 0 auto;
+    width: auto;
+    max-width: none;
+}
 
 
 /* ----------  This section is for the app ---------- */

@@ -34,6 +34,7 @@ ALLOWED_HOSTS = [".st-aidans.com","st-aidans.com",".herokuapp.com", "localhost",
 INSTALLED_APPS = [
     'jcrsite',
     'home',
+    'shop',
     'search',
     'forms',
     'gallery',
