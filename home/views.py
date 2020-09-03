@@ -112,6 +112,8 @@ def get_events(request):
 
 @login_required(login_url='/user/login')
 def chat_setup(request):
+    return None
+    '''
     if request.method == 'GET':
         with connections['jcrdb'].cursor() as cursor:
             cursor.execute("INSERT INTO conversations (subject, clientid, clientname, welfareid) VALUES (%s, %s, %s, %s);",
@@ -124,7 +126,7 @@ def chat_setup(request):
         # Need to make some sort of restriction on this to avoid spam
         cursor.execute("INSERT INTO conversations (subject, clientid, clientname, welfareid) VALUES (%s, %s, %s, %s);",
         [request.POST['subject'], request.POST['clientid'], request.POST['clientname'], request.POST['welfareid']])
-        return None
+        return None'''
 
 
 @login_required(login_url='/user/login')

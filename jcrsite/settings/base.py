@@ -136,7 +136,7 @@ USE_L10N = True
 
 USE_TZ = True
 
-WAGTAILIMAGES_MAX_UPLOAD_SIZE = 50 * 1024 * 1024
+WAGTAILIMAGES_MAX_UPLOAD_SIZE = 250 * 1024 * 1024
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/1.10/howto/static-files/
