@@ -10,6 +10,11 @@ DEBUG = True
 SECRET_KEY = 'y3nc$5+yz$j-z6*b391t196qli7$vs4yqux=spn_#4h+8a3%ec'
 EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
 
+# SSL
+CSRF_COOKIE_SECURE = False
+SESSION_COOKIE_SECURE = False
+SECURE_SSL_REDIRECT = False
+
 ENV_PATH = os.path.join(BASE_DIR, '.env.dev')
 
 if os.path.isfile(ENV_PATH):

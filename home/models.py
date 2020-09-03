@@ -12,7 +12,8 @@ from wagtail.core.models import Page, Orderable
 from wagtail.images.edit_handlers import ImageChooserPanel
 from wagtail.search import index
 from wagtail.documents.blocks import DocumentChooserBlock
-from home.blocks import LinkedButtonBlock
+from wagtail.core import blocks
+from home.blocks import LinkedButtonBlock, SectionBlock
 
 class BlogPage(MenuPage):
     # owner can be obtained from the owner attribute (in Page).
@@ -48,12 +49,18 @@ class GenericPage(MenuPage):
     subtitle = models.CharField(blank=True, max_length=250)
     body = RichTextField(blank=True)
 
+    sections = StreamField([
+        ('text', blocks.RichTextBlock(blank=True)),
+        ('sections', SectionBlock())
+        ], null=True, blank=True)
+
     search_fields = Page.search_fields + [
         index.SearchField('body'),
     ]
 
     content_panels = Page.content_panels + [
-        FieldPanel('body', classname="full")
+        FieldPanel('body', classname="full"),
+        StreamFieldPanel('sections')
     ]
 
 
