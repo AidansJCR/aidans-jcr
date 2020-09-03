@@ -1,7 +1,7 @@
 from __future__ import absolute_import, unicode_literals
 
 from django.conf import settings
-from django.urls import include, path, re_path
+from django.urls import include, path
 from django.contrib import admin
 
 from search import views as search_views
@@ -11,20 +11,16 @@ from wagtail.documents import urls as wagtaildocs_urls
 from wagtail.contrib.sitemaps.views import sitemap
 
 from django.contrib.auth import views as auth_views
+from shop import views
 from home import views as home_views
 
+
 urlpatterns = [
-    #path('api/', include('home.api_urls')),
-    #path('user/', include('home.urls')),
-    #path('shop/', include('shop.urls')),
-    re_path(r'^login/$', auth_views.LoginView.as_view(), name='login'),
-    re_path(r'^logout/$', auth_views.LogoutView.as_view(), name='logout'),
-    re_path(r'^django-admin/', admin.site.urls),
-    re_path(r'^admin/', include(wagtailadmin_urls)),
-    re_path(r'^documents/', include(wagtaildocs_urls)),
-    re_path(r'^search/$', search_views.search, name='search'),
-    re_path(r'^sitemap\.xml$', sitemap),
-    re_path(r'', include(wagtail_urls)),
+    #The api url patterns
+    path('login', home_views.login),
+    path('logout', home_views.logout),
+    path('setup', views.setup),
+    path('', views.home),
 ]
 
 

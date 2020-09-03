@@ -3,10 +3,12 @@ from django.shortcuts import render, redirect
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.decorators import login_required
 from django.db import connections
+from django.contrib.auth.models import User
 
 from home.models import AppAnnouncement, Event
 from datetime import datetime
 import json
+import requests
 
 
 @login_required(login_url='/user/login')
@@ -29,6 +31,16 @@ def user_login(request):
         else:
             return render(request, 'home/user/login.html', {'error':'Incorrect login'})
     else:
+        if request.method == 'GET':
+            #They are requesting the login page
+            return render(request, 'home/user/login.html', {'error':''})
+        elif request.method == 'POST':
+            password = request.POST['password']
+            if requests.get('https://www.dur.ac.uk/its/password/validator', auth=(username,password)).status_code != 401:
+                request.session['username'] == username.lower()
+                return redirect('/user')
+            else:
+                return render(request, 'home/user/login.html', {'error':'Incorrect login'})
         #They are trying to do something weird
         return None
 
@@ -122,3 +134,14 @@ def chat(request):
             cursor.execute("SELECT * FROM messages WHERE convid=%s", [request.POST['convid']])
             result = cursor.fetchall()
     return None
+# Really have to focus on security for this part to ensure people can't view each others messages
+# I'd rather it didn't work at all...
+def get_chat_msgs(request):
+    if request.method == "GET":
+        with connections['jcrdb'].cursor() as cursor:
+            cursor.execute("SELECT * FROM messages WHERE convid ==%s;", [request.GET['convid']])
+            result = cursor.fetchall()
+            response = []
+            for row in result:
+                reponse.append({'sender':row[0],'timesent':row[1],'message':row[2]})
+            return JsonResponse(response, safe=False)

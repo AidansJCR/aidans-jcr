@@ -4,7 +4,7 @@ verify_ssl = true
 name = "pypi"
 
 [packages]
-django = "*"
+django = "~=3.0"
 gunicorn = "*"
 whitenoise = "*"
 dj-database-url = "*"
@@ -13,8 +13,8 @@ django-storages = "*"
 "boto3" = "*"
 psycopg2-binary = "*"
 django-environ = "*"
-wagtailmenus = "*"
-wagtail = "*"
+wagtailmenus = "~=3.0.2"
+wagtail = "~=2.8"
 
 [dev-packages]
 

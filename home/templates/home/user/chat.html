@@ -4,35 +4,47 @@
 {% block content %}
 <div class="page-container">
 
-<div class="container">
-  <p>Welcome user</p>
-</div>
+  <div class="container">
+    <p>Welcome user</p>
+  </div>
 
-{% if page.show_blog_posts %}
-<div class="container">
-    <div class="row">
-      <h2>Latest News</h2>
-    </div>
-    <div class="row">
+  <div class="container">
+    <div id="msgs" class="row">
+      <div class="col">
 
-        {% for blogpost in blog_posts.all %}
-            <figure class="snip1529">
-              {% image blogpost.feed_image height-200 class="blog-thumbnail"%}
-              <div class="date">
-                  <span class="day">{{blogpost.first_published_at|date:"d"}}</span>
-                  <span class="month">{{blogpost.first_published_at|date:"M"}}</span>
+          {# Message template #}
+          {# Align it on different sides based on who sent it #}
+          <div id="[MESSAGE_ID]" class="row">
+            <div class="{% if sent_locally %}col-md-offset-4{% endif %} col-md-8">
+              <p>Name Here</p>
+              <p>Message content here</p>
               </div>
-              <figcaption>
+            </div>
 
-                  <h4>{{ blogpost.title }}</h4>
-                  <p>{{blogpost.search_description | richtext}}</p>
-                  <a href="{% pageurl blogpost %}"></a>
-              </figcaption>
-            </figure>
-        {% endfor %}
-
+      </div>
     </div>
+
+    <div id="msg-container" class="row">
+      <form method="POST" action="/user/chat">
+        <input type="text" name="msg-content"/>
+        <input type="submit" value="&#x23ce;"/>
+      </form>
+    </div>
+  </div>
 </div>
-{% endif %}
-</div>
+{% endblock %}
+
+{% block extra_js %}
+<script>
+    setInterval(function() {
+        $.ajax({
+            type: "GET",
+            url: "/user/getmessages",  // URL to your view that serves new info
+            data: {'append_increment': append_increment}
+        })
+        .done(function(response) {
+            $('#_appendHere').append(response);
+        });
+    }, 10000)
+  </script>
 {% endblock %}
