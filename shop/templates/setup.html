@@ -16,19 +16,24 @@
 
       <div id="collapseOne" class="collapse show" aria-labelledby="headingOne" data-parent="#accordion">
         <div class="card-body">
-          <div class="container" style="border-style:solid;">
-            <div class="row d-flex" style="border-style:solid;">
-              <div class="col-auto">
-                <p style="border-style:solid;">Name:</p>
-              </div>
+          <div class="container">
+            <div class="row d-flex mb-2">
+              <div class="col-auto">Name:</div>
               <div class="col-auto"><input type="text" id="ingredient-name" required></div>
             </div>
-            <div class="row">
-              <p>Price:</p>
-              <input type="number" id="ingredient-price" required>
+            <div class="row mb-2">
+              <div class="col-auto">Price:</div>
+              <div class="col-md-2">
+                <div class="input-group">
+                  <div class="input-group-prepend">
+                    <span class="input-group-text">£</span>
+                  </div>
+                  <input type="text" class="form-control" id="ingredient-price" aria-label="Amount (to the nearest penny)">
+                </div>
+              </div>
             </div>
-            <div class="row">
-              <p>Category:</p>
+            <div class="row mb-2">
+              <div class="col-auto">Category:</div>
               <select id="ingredient-category" required>
                 <option value="Bread">Bread</option>
                 <option value="Cheese">Cheese</option>
@@ -37,16 +42,16 @@
                 <option value="Sauce">Sauce</option>
               </select>
             </div>
-            <div class="row">
-              <p>Image:</p>
-              <input type="text" id="ingredient-img" required>
+            <div class="row mb-2">
+              <div class="col-auto">Image:</div>
+              <input type="file" id="ingredient-img" required>
             </div>
             <div class="row">
-              <p>Allergens:</p>
-              <input type="checkbox" id="allergen-dairy">
-              <input type="checkbox" id="allergen-egg">
-              <input type="checkbox" id="allergen-meat">
-              <input type="checkbox" id="allergen-nuts">
+              <div class="col-auto">Allergens:</div>
+              <div class="col-md-auto"><input type="checkbox" id="allergen-dairy">&#160;Dairy</div>
+              <div class="col-md-auto"><input type="checkbox" id="allergen-egg">&#160;Egg</div>
+              <div class="col-md-auto"><input type="checkbox" id="allergen-meat">&#160;Meat</div>
+              <div class="col-md-auto"><input type="checkbox" id="allergen-nuts">&#160;Nuts</div>
             </div>
           </div>
         </div>
