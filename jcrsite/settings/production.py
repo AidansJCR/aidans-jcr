@@ -33,7 +33,7 @@ if db_from_env:
     EMAIL_PORT = 587
     EMAIL_USE_TLS = True
 
-    DEBUG = False
+    DEBUG = os.environ['DEBUG']
 
     # SECURITY WARNING: keep the secret key used in production secret!
     SECRET_KEY = os.environ['DJANGO_SECRET_KEY']
@@ -44,7 +44,7 @@ if db_from_env:
     SECURE_SSL_REDIRECT = True
 
     # Static file compression and caching
-    STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
+    #STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 
     # Load in the JCR DATABASE
     DATABASES['jcrdb'] = {
