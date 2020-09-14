@@ -5,15 +5,15 @@ from wagtail.core import blocks
 from wagtailmenus.models import MenuPage
 from wagtail.core.models import Page, Orderable
 from wagtail.images.edit_handlers import ImageChooserPanel
+from multiselectfield import MultiSelectField
 
 
 # Create your models here.
 class Item(models.Model):
     name = models.CharField(max_length=200)
+    price = models.DecimalField(max_digits=5, decimal_places=2)
     description = RichTextField(null=True, blank=True)
-    image = models.ForeignKey(
-        'wagtailimages.Image', on_delete=models.CASCADE, related_name="+", null=True, blank=True
-    )
+    image = models.ImageField(upload_to='shop_images')
 
     class Meta():
         abstract = True
@@ -21,13 +21,9 @@ class Item(models.Model):
 
 class Ingredient(Item):
     #This will inherit the attributes of item as well as any allergens (the toastie class can alert the user of these)
-    price = models.DecimalField(max_digits=5, decimal_places=2)
-    category = StreamField([
-    ('Category', blocks.ChoiceBlock(choices=['bread', 'cheese', 'meat', 'other', 'sauce']))
-    ])
-    allergens = StreamField([
-    ('Allergens', blocks.MultipleChoiceBlock(choices=['dairy', 'eggs', 'meat', 'nuts'], required=False))
-    ])
+    category = [('b', 'bread'), ('c', 'cheese'), ('m', 'meat'), ('o', 'other'), ('s', 'sauce')]
+    allergen_options = [('d', 'dairy'), ('e', 'eggs'), ('m', 'meat'), ('n', 'nuts')]
+    allergens = MultiSelectField(choices=allergen_options)
 
 
 class Toastie(Item):

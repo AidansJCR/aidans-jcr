@@ -17,42 +17,50 @@
       <div id="collapseOne" class="collapse show" aria-labelledby="headingOne" data-parent="#accordion">
         <div class="card-body">
           <div class="container">
-            <div class="row d-flex mb-2">
-              <div class="col-auto">Name:</div>
-              <div class="col-auto"><input type="text" id="ingredient-name" required></div>
-            </div>
-            <div class="row mb-2">
-              <div class="col-auto">Price:</div>
-              <div class="col-md-2">
-                <div class="input-group">
-                  <div class="input-group-prepend">
-                    <span class="input-group-text">£</span>
+            <form enctype="multipart/form-data" id="ingredient-form" method="POST" novalidate="">
+              <div class="row d-flex mb-2">
+                <div class="col-auto">Name:</div>
+                <div class="col-auto"><input type="text" id="ingredient-name" required></div>
+              </div>
+              <div class="row d-flex mb-2">
+                <div class="col-auto">Description:</div>
+                <div class="col-auto"><textarea class="form-control" id="ingredient-desc" rows="3"></textarea></div>
+              </div>
+              <div class="row mb-2">
+                <div class="col-auto">Price:</div>
+                <div class="col-md-2">
+                  <div class="input-group">
+                    <div class="input-group-prepend">
+                      <span class="input-group-text">£</span>
+                    </div>
+                    <input type="text" class="form-control" id="ingredient-price" aria-label="Amount (to the nearest penny)" required>
                   </div>
-                  <input type="text" class="form-control" id="ingredient-price" aria-label="Amount (to the nearest penny)">
                 </div>
               </div>
-            </div>
-            <div class="row mb-2">
-              <div class="col-auto">Category:</div>
-              <select id="ingredient-category" required>
-                <option value="Bread">Bread</option>
-                <option value="Cheese">Cheese</option>
-                <option value="Meat">Meat</option>
-                <option value="Other">Other</option>
-                <option value="Sauce">Sauce</option>
-              </select>
-            </div>
-            <div class="row mb-2">
-              <div class="col-auto">Image:</div>
-              <input type="file" id="ingredient-img" required>
-            </div>
-            <div class="row">
-              <div class="col-auto">Allergens:</div>
-              <div class="col-md-auto"><input type="checkbox" id="allergen-dairy">&#160;Dairy</div>
-              <div class="col-md-auto"><input type="checkbox" id="allergen-egg">&#160;Egg</div>
-              <div class="col-md-auto"><input type="checkbox" id="allergen-meat">&#160;Meat</div>
-              <div class="col-md-auto"><input type="checkbox" id="allergen-nuts">&#160;Nuts</div>
-            </div>
+              <div class="row mb-2">
+                <div class="col-auto">Category:</div>
+                <select id="ingredient-category" required>
+                  <option value="Bread">Bread</option>
+                  <option value="Cheese">Cheese</option>
+                  <option value="Meat">Meat</option>
+                  <option value="Other">Other</option>
+                  <option value="Sauce">Sauce</option>
+                </select>
+              </div>
+              <div class="row mb-2">
+                <div class="col-auto">Image:</div>
+                <input type="file" id="ingredient-img">
+              </div>
+              <div class="row">
+                <div class="col-auto">Allergens:</div>
+                <div class="col-md-auto"><input type="checkbox" id="allergen-dairy">&#160;Dairy</div>
+                <div class="col-md-auto"><input type="checkbox" id="allergen-egg">&#160;Egg</div>
+                <div class="col-md-auto"><input type="checkbox" id="allergen-meat">&#160;Meat</div>
+                <div class="col-md-auto"><input type="checkbox" id="allergen-nuts">&#160;Nuts</div>
+                <!--div class="ml-auto"><button class="btn btn-success" id="add-ingredient" type="button">Add Ingredient</button></div-->
+              </div>
+              <input type="submit">Add Ingredient</input>
+            </form>
           </div>
         </div>
       </div>
@@ -61,13 +69,15 @@
       <div class="card-header" id="headingTwo">
         <h5 class="mb-0">
           <button class="btn btn-link collapsed" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
-            Edit Ingredients
+            Edit Items
           </button>
         </h5>
       </div>
       <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordion">
         <div class="card-body">
-          <div id="ingredients"></div>
+          <select id="selected-item">
+          </select>
+          <div id="items"></div>
         </div>
       </div>
     </div>
@@ -80,10 +90,43 @@
         </h5>
       </div>
       <div id="collapseThree" class="collapse" aria-labelledby="headingThree" data-parent="#accordion">
-        <div class="card-body">
-          Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt
-          aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat
-          craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS.
+        <div class="card-body d-flex justify-content-between">
+          <div class="col-md-7">
+            <div class="row">
+              <select id="toastie-category" required>
+                <option value="Bread">Bread</option>
+                <option value="Cheese">Cheese</option>
+                <option value="Meat">Meat</option>
+                <option value="Other">Other</option>
+                <option value="Sauce">Sauce</option>
+              </select>
+            </div>
+            <div class="row" id="toastie-ing-category">
+            </div>
+          </div>
+          <div class="col-md-5" style="border-left:5px solid gray;">
+            <div class="row d-flex mb-2">
+              <div class="col-auto">Name:</div>
+              <div class="col-auto"><input type="text" id="toastie-name" required></div>
+            </div>
+            <div class="row mb-2">
+              <div class="col-auto">Price:</div>
+              <div class="col-md-8">
+                <div class="input-group">
+                  <div class="input-group-prepend">
+                    <span class="input-group-text">£</span>
+                  </div>
+                  <input type="text" class="form-control" id="toastie-price" aria-label="Amount (to the nearest penny)">
+                </div>
+              </div>
+            </div>
+            <div class="row d-flex mb-2">
+              <div class="col-auto">Ingredients:</div>
+            </div>
+            <div class="row d-flex mb-2">
+              <div class="col-auto" id="selected-ingredients"></div>
+            </div>
+          </div>
         </div>
       </div>
     </div>
@@ -105,4 +148,106 @@
     </div>
   </div>
 </div>
+{% endblock %}
+
+{% block extra_js %}
+<script type="text/javascript">
+  ingredients = [];
+  toasties = [];
+  var csrftoken = $("[name=csrfmiddlewaretoken]").val();
+
+  $(document).ready(function() {
+    // Populate the page with existing ingredients, items and toasties
+
+    // Get the ingredients
+    $.ajax({
+      type: "GET",
+      url: "/shop/getingredients",
+      success: populateIngredients,
+    });
+
+    console.log("ready!");
+  });
+
+  $('#add-ingredient').click(function(event) {
+    let allergens = [];
+    if ($('#allergen-dairy').prop("checked")) {
+      allergens.push("dairy");
+    }
+    if ($('#allergen-egg').prop("checked")) {
+      allergens.push("egg");
+    }
+    if ($('#allergen-meat').prop("checked")) {
+      allergens.push("meat");
+    }
+    if ($('#allergen-nuts').prop("checked")) {
+      allergens.push("nuts");
+    }
+
+    /*$.ajax({
+      type: "POST",
+      url: "/shop/setup/addingredient",
+      'contentType': 'application/json; charset=UTF-8',
+      dataType: 'json',
+      headers: {
+        "X-CSRFToken": '{{ csrf_token }}'
+      },
+      data: JSON.stringify({
+        name: $('#ingredient-name').val(),
+        desc: $('#ingredient-desc').val(),
+        price: $('#ingredient-price').val(),
+        cat: $('#ingredient-category').val(),
+        img: $('#ingredient-img').val(),
+        'allergens': allergens,
+      }),
+      success: console.log("EZ Clap"),
+    });*/
+
+    $('#ingredient-form').submit(function(e){
+        e.preventDefault();
+        $form = $(this)
+        var formData = new FormData(this);
+        $.ajax({
+            url: "/shop/setup/addingredient",
+            type: 'POST',
+            data: formData,
+            success: function (response) {
+                $('.error').remove();
+                console.log(response)
+                if(response.error){
+                    $.each(response.errors, function(name, error){
+                        error = '<small class="text-muted error">' + error + '</small>'
+                        $form.find('[name=' + name + ']').after(error);
+                    })
+                }
+                else{
+                    alert(response.message)
+                    window.location = ""
+                }
+            },
+            cache: false,
+            contentType: false,
+            processData: false
+        });
+    });
+  });
+
+  function populateIngredients(data) {
+    ingredients = data;
+
+    for (ingredient in ingredients) {
+      $('#selected-item').append("<option value='" + ingredient + "'>" + ingredient + "</option>");
+    }
+  };
+
+  $('#toastie-category').change(function(event) {
+    $('toastie-ing-category').val() = "";
+    for (ingredient in ingredients) {
+      if (ingredient['category'] == $('#toastie-category').val()) {
+        newItem = '<div class="col-md-6">' + ingredient['name'] + '</div>';
+        $('#toastie-category').append(newItem);
+      }
+    }
+  });
+</script>
 {% endblock %}

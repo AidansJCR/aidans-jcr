@@ -1,0 +1,16 @@
+{% load wagtailcore_tags wagtailimages_tags static %}
+
+<div class="container">
+  {% for link in page.links.all %}
+    <figure class="snip1580">
+    {% image link.image fill-400x200 class="blog-thumbnail" %}
+    <figcaption>
+
+        <h4>{{ link.name }}</h4>
+        <p class=>{{ link.description | richtext}}</p>
+        <a href="{{ link.destination_page.url }}"></a>
+    </figcaption>
+  </figure>
+  {% endfor %}
+
+</div>

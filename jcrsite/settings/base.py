@@ -40,6 +40,7 @@ INSTALLED_APPS = [
     'gallery',
     'aidansadmintheme',
     'cisauth',
+    'multiselectfield',
     'wagtail.contrib.forms',
     'wagtail.contrib.redirects',
     'wagtail.embeds',
@@ -136,6 +137,7 @@ USE_L10N = True
 
 USE_TZ = True
 
+# This is the upload cap for all files
 WAGTAILIMAGES_MAX_UPLOAD_SIZE = 250 * 1024 * 1024
 
 # Static files (CSS, JavaScript, Images)

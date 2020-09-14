@@ -64,6 +64,22 @@ class GenericPage(MenuPage):
     ]
 
 
+# This will make it easier for people to make their own page without having to know what exists
+# Very messy but easy for people who aren't familiar
+class CustomPage(MenuPage):
+    subtitle = models.CharField(blank=True, max_length=250)
+
+    sections = StreamField([
+        ('text', blocks.RichTextBlock(blank=True)),
+        ('sections', SectionBlock())
+        ], null=True, blank=True)
+        # Need more blocks to put here (links to other pages, images, etc.)
+
+    content_panels = Page.content_panels + [
+        StreamFieldPanel('sections')
+    ]
+
+
 class HomePage(MenuPage):
     body = RichTextField(blank=True)
     show_blog_posts = models.BooleanField()

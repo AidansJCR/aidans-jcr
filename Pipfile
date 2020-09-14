@@ -15,6 +15,7 @@ psycopg2-binary = "*"
 django-environ = "*"
 wagtailmenus = "~=3.0.2"
 wagtail = "~=2.8"
+django-multiselectfield = "*"
 
 [dev-packages]
 

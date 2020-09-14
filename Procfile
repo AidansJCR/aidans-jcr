@@ -1,1 +1,1 @@
-web: gunicorn --pythonpath jcrsite/ jcrsite.wsgi --log-file -
+web: gunicorn --pythonpath jcrsite/ jcrsite.wsgi --timeout 200 --log-file=-

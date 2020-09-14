@@ -19,14 +19,10 @@ urlpatterns = [
     #The api url patterns
     path('login', home_views.login),
     path('logout', home_views.logout),
+    
     path('setup', views.setup),
+    path('setup/addingredient', views.add_ingredient),
+
+    path('getingredients', views.get_ingredients),
     path('', views.home),
 ]
-
-
-
-from django.conf.urls.static import static
-from django.contrib.staticfiles.urls import staticfiles_urlpatterns
-# Serve static and media files from development server
-urlpatterns += staticfiles_urlpatterns()
-urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
