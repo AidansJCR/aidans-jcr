@@ -33,7 +33,7 @@ if db_from_env:
     EMAIL_PORT = 587
     EMAIL_USE_TLS = True
 
-    DEBUG = os.environ['DEBUG']
+    DEBUG = False
 
     # SECURITY WARNING: keep the secret key used in production secret!
     SECRET_KEY = os.environ['DJANGO_SECRET_KEY']
