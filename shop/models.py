@@ -11,9 +11,9 @@ from multiselectfield import MultiSelectField
 # Create your models here.
 class Item(models.Model):
     name = models.CharField(max_length=200)
-    price = models.DecimalField(max_digits=5, decimal_places=2)
+    price = models.DecimalField(max_digits=5, decimal_places=2, default=0)
     description = RichTextField(null=True, blank=True)
-    image = models.ImageField(upload_to='shop_images')
+    image = models.ImageField(null=True, blank=True, upload_to='shop_images')
 
     class Meta():
         abstract = True

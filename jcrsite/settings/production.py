@@ -39,10 +39,6 @@ if db_from_env:
     SECRET_KEY = os.environ['DJANGO_SECRET_KEY']
 
     # SSL
-    CSRF_COOKIE_SECURE = True
-    SESSION_COOKIE_SECURE = True
-    SECURE_SSL_REDIRECT = True
-
     SECURE_BROWSER_XSS_FILTER = True
     X_FRAME_OPTIONS = 'DENY'
     SECURE_SSL_REDIRECT = True
