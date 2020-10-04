@@ -62,8 +62,6 @@ class GenericPage(MenuPage):
 # This will make it easier for people to make their own page without having to know what exists
 # Very messy but easy for people who aren't familiar
 class CustomPage(MenuPage):
-    subtitle = models.CharField(blank=True, max_length=250)
-
     sections = StreamField([
         ('heading', blocks.CharBlock(classname="full title")),
         ('paragraph', blocks.RichTextBlock(blank=True)),
