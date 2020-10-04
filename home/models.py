@@ -10,6 +10,7 @@ from wagtail.core import blocks
 from wagtailmenus.models import MenuPage
 from wagtail.core.models import Page, Orderable
 from wagtail.images.edit_handlers import ImageChooserPanel
+from wagtail.images.blocks import ImageChooserBlock
 from wagtail.search import index
 from wagtail.documents.blocks import DocumentChooserBlock
 from wagtail.core import blocks
@@ -49,36 +50,29 @@ class GenericPage(MenuPage):
     subtitle = models.CharField(blank=True, max_length=250)
     body = RichTextField(blank=True)
 
-    sections = StreamField([
-        ('text', blocks.RichTextBlock(blank=True)),
-        ('sections', SectionBlock())
-        ], null=True, blank=True)
-
     search_fields = Page.search_fields + [
         index.SearchField('body'),
     ]
 
     content_panels = Page.content_panels + [
         FieldPanel('body', classname="full"),
-        StreamFieldPanel('sections')
     ]
 
 
 # This will make it easier for people to make their own page without having to know what exists
 # Very messy but easy for people who aren't familiar
-'''class CustomPage(MenuPage):
-    subtitle = models.CharField(blank=True, max_length=250)
-
+class CustomPage(MenuPage):
     sections = StreamField([
-        ('text', blocks.RichTextBlock(blank=True)),
-        ('sections', SectionBlock())
+        ('heading', blocks.CharBlock(classname="full title")),
+        ('paragraph', blocks.RichTextBlock(blank=True)),
+        ('image', ImageChooserBlock()),
         ], null=True, blank=True)
         # Need more blocks to put here (links to other pages, images, etc.)
 
     content_panels = Page.content_panels + [
         StreamFieldPanel('sections')
     ]
-'''
+
 
 class HomePage(MenuPage):
     body = RichTextField(blank=True)
