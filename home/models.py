@@ -50,18 +50,12 @@ class GenericPage(MenuPage):
     subtitle = models.CharField(blank=True, max_length=250)
     body = RichTextField(blank=True)
 
-    sections = StreamField([
-        ('text', blocks.RichTextBlock(blank=True)),
-        ('sections', SectionBlock())
-        ], null=True, blank=True)
-
     search_fields = Page.search_fields + [
         index.SearchField('body'),
     ]
 
     content_panels = Page.content_panels + [
         FieldPanel('body', classname="full"),
-        StreamFieldPanel('sections')
     ]
 
 
