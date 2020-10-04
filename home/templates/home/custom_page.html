@@ -14,8 +14,9 @@
         <h3>{{ block.value }}</h3>
       {% elif block.block_type == "image" %}
         {% image block.value original as img %}
-        <img class="img-fluid" src="{{ img.url }}" width="{{ img.width }}"
-        height="{{ img.height }}" />
+        <div class="text-center">
+          <img class="img-fluid" src="{{ img.url }}" width="{{ img.width }}" height="{{ img.height }}" />
+        </div>
       {% else %}
         {{ block }}
       {% endif %}
