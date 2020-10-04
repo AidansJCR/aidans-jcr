@@ -52,8 +52,15 @@ CODE FOR SETTING UP SPECIFIC UI WIDGETS, SUCH AS DELETE BUTTONS OR MENUS, DOES N
             self.container.slideDown();
 
             // focus first suitable input found
-            var timeout = setTimeout(function() {
-                $('.input input,.input textarea,.input .richtext', self.container).first().focus();
+            setTimeout(function() {
+              var $input = $('.input', self.container);
+              var $firstField = $('input, textarea, [data-hallo-editor], [data-draftail-input]', $input).first();
+
+              if ($firstField.is('[data-draftail-input]')) {
+                $firstField.get(0).draftailEditor.focus();
+              } else {
+                $firstField.trigger('focus');
+              }
             }, 250);
         };
 
@@ -86,9 +93,6 @@ CODE FOR SETTING UP SPECIFIC UI WIDGETS, SUCH AS DELETE BUTTONS OR MENUS, DOES N
             return opts.prefix + '-' + newIndex;
         }
 
-        function setInitialMoveUpDownState(newMember) {
-        }
-
         function postInsertMember(newMember) {
             /* run any supplied initializer functions */
             if (opts.onInitializeMember) {
@@ -111,6 +115,11 @@ CODE FOR SETTING UP SPECIFIC UI WIDGETS, SUCH AS DELETE BUTTONS OR MENUS, DOES N
             }
 
             newMember._markAdded();
+
+            if (members.length >= opts.maxNumChildBlocks && opts.onDisableAdd) {
+                /* maximum block capacity has been reached */
+                opts.onDisableAdd(members)
+            }
         }
 
         function elementFromTemplate(template, newPrefix) {
@@ -120,7 +129,7 @@ CODE FOR SETTING UP SPECIFIC UI WIDGETS, SUCH AS DELETE BUTTONS OR MENUS, DOES N
         }
 
         self.insertMemberBefore = function(otherMember, template) {
-            newMemberPrefix = getNewMemberPrefix();
+            var newMemberPrefix = getNewMemberPrefix();
 
             /* Create the new list member element with the real prefix substituted in */
             var elem = elementFromTemplate(template, newMemberPrefix);
@@ -147,7 +156,7 @@ CODE FOR SETTING UP SPECIFIC UI WIDGETS, SUCH AS DELETE BUTTONS OR MENUS, DOES N
         };
 
         self.insertMemberAfter = function(otherMember, template) {
-            newMemberPrefix = getNewMemberPrefix();
+            var newMemberPrefix = getNewMemberPrefix();
 
             /* Create the new list member element with the real prefix substituted in */
             var elem = elementFromTemplate(template, newMemberPrefix);
@@ -178,7 +187,7 @@ CODE FOR SETTING UP SPECIFIC UI WIDGETS, SUCH AS DELETE BUTTONS OR MENUS, DOES N
                 self.insertMemberBefore(members[0], template)
             because that won't work for initially empty lists
             */
-            newMemberPrefix = getNewMemberPrefix();
+            var newMemberPrefix = getNewMemberPrefix();
 
             /* Create the new list member element with the real prefix substituted in */
             var elem = elementFromTemplate(template, newMemberPrefix);
@@ -204,7 +213,7 @@ CODE FOR SETTING UP SPECIFIC UI WIDGETS, SUCH AS DELETE BUTTONS OR MENUS, DOES N
         };
 
         self.insertMemberAtEnd = function(template) {
-            newMemberPrefix = getNewMemberPrefix();
+            var newMemberPrefix = getNewMemberPrefix();
 
             /* Create the new list member element with the real prefix substituted in */
             var elem = elementFromTemplate(template, newMemberPrefix);
@@ -242,6 +251,11 @@ CODE FOR SETTING UP SPECIFIC UI WIDGETS, SUCH AS DELETE BUTTONS OR MENUS, DOES N
             if (index === members.length && members.length > 0 && opts.onDisableMoveDown) {
                 /* deleting the last member; the new last member cannot move down now */
                 opts.onDisableMoveDown(members[members.length - 1]);
+            }
+
+            if (members.length + 1 >= opts.maxNumChildBlocks && members.length < opts.maxNumChildBlocks && opts.onEnableAdd) {
+                /* there is now capacity left for another block */
+                opts.onEnableAdd(members)
             }
         };
 
@@ -338,6 +352,11 @@ CODE FOR SETTING UP SPECIFIC UI WIDGETS, SUCH AS DELETE BUTTONS OR MENUS, DOES N
             }
         }
 
+        if (members.length >= opts.maxNumChildBlocks && opts.onDisableAdd) {
+            /* block capacity is already reached on initialization */
+            opts.onDisableAdd(members)
+        }
+      
         return self;
     };
 })(jQuery);

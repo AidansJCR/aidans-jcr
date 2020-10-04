@@ -1,0 +1,25 @@
+{% extends "base.html" %}
+{% load wagtailcore_tags wagtailimages_tags static menu_tags %}
+{% block body_class %}template-generic{% endblock %}
+
+{% block content %}
+<div class="container page-container">
+      {% include "breadcrumbs.html" %}
+    <div class="title-header">
+        <h1 class="display1">{{page.title}}</h1>
+    </div>
+
+    {% for block in page.sections %}
+      {% if block.block_type == "heading" %}
+        <h3>{{ block.value }}</h3>
+      {% elif block.block_type == "image" %}
+        {% image block.value.image fill-400x500 as img %}
+        <img src="{{ img.url }}" width="{{ tmp_photo.width }}"
+        height="{{ tmp_photo.height }}" />
+      {% else %}
+        {{ block }}
+      {% endif %}
+    {% endfor %}
+
+</div>
+{% endblock %}
