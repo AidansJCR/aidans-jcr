@@ -13,9 +13,9 @@
       {% if block.block_type == "heading" %}
         <h3>{{ block.value }}</h3>
       {% elif block.block_type == "image" %}
-        {% image block.value.image fill-400x500 as img %}
-        <img src="{{ img.url }}" width="{{ tmp_photo.width }}"
-        height="{{ tmp_photo.height }}" />
+        {% image block.value original as img %}
+        <img class="img-fluid" src="{{ img.url }}" width="{{ img.width }}"
+        height="{{ img.height }}" />
       {% else %}
         {{ block }}
       {% endif %}
