@@ -47,7 +47,6 @@ class BlogPage(MenuPage):
 
 
 class GenericPage(MenuPage):
-    subtitle = models.CharField(blank=True, max_length=250)
     body = RichTextField(blank=True)
 
     search_fields = Page.search_fields + [

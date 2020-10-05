@@ -31,9 +31,6 @@ if os.path.isfile(ENV_PATH):
         'PASSWORD': env('AWS_JCR_DATA_PASS')
     }
 
-else:
-    print('Local .env file does not exist')
-
 try:
     from .local import *
 except ImportError:
