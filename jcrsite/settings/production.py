@@ -56,6 +56,16 @@ if db_from_env:
         'PASSWORD': os.environ['AWS_JCR_DATA_PASS']
     }
 
+    # Updating the default channel layer to work on production
+    CHANNEL_LAYERS = {
+        'default': {
+            'BACKEND': 'channels_redis.core.RedisChannelLayer',
+            'CONFIG': {
+                "hosts": [os.environ['REDIS_URL']],
+            },
+        },
+    }
+
 try:
     from .local import *
 except ImportError:
