@@ -16,6 +16,7 @@ django-environ = "*"
 wagtailmenus = "~=3.0.2"
 wagtail = "~=2.8"
 django-multiselectfield = "*"
+channels = "*"
 
 [dev-packages]
 
