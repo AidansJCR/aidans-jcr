@@ -17,7 +17,7 @@ urlpatterns = [
     #path('api/', include('home.api_urls')),
     #path('user/', include('home.urls')),
     #path('shop/', include('shop.urls')),
-    path('welfarechat/', include('welfarechat.urls')),
+    #path('welfarechat/', include('welfarechat.urls')),
     re_path(r'^login/$', auth_views.LoginView.as_view(), name='login'),
     re_path(r'^logout/$', auth_views.LogoutView.as_view(), name='logout'),
     re_path(r'^django-admin/', admin.site.urls),
