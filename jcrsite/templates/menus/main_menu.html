@@ -18,7 +18,14 @@
       <div class="collapse navbar-collapse" id="aidans-navbar-collapse">
         <ul class="navbar-nav mr-auto">
           {% for item in menu_items %}
-          <li class="nav-item {{ item.active_class }}"><a class="nav-link" href="{{item.href}}">{{ item.text }}</a></li>
+          <li class="nav-item {{ item.active_class }} {% if item.has_children_in_menu %}dropdown{% endif %}">
+            <a class="nav-link" href="{{item.href}}">{{ item.text }}</a>
+          {% if item.has_children_in_menu %}
+            <div class="dropdown-menu">
+              {% sub_menu item %}
+            </div>
+          {% endif %}
+          </li>
           {% endfor %}
         </ul>
         <form class="form-inline" action="{% url 'search' %}">
