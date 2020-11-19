@@ -47,14 +47,14 @@ if db_from_env:
     # STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 
     # Load in the JCR DATABASE
-    DATABASES['jcrdb'] = {
+    '''DATABASES['jcrdb'] = {
         'ENGINE': 'django.db.backends.postgresql',
         'NAME': os.environ['AWS_JCR_DATA_NAME'],
         'HOST': os.environ['AWS_JCR_DATA_HOST'],
         'PORT': os.environ['AWS_JCR_DATA_PORT'],
         'USER': os.environ['AWS_JCR_DATA_USER'],
         'PASSWORD': os.environ['AWS_JCR_DATA_PASS']
-    }
+    }'''
 
     # Updating the default channel layer to work on production
     CHANNEL_LAYERS = {
