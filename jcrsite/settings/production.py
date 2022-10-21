@@ -57,14 +57,14 @@ if db_from_env:
     }'''
 
     # Updating the default channel layer to work on production
-    CHANNEL_LAYERS = {
-        'default': {
-            'BACKEND': 'channels_redis.core.RedisChannelLayer',
-            'CONFIG': {
-                "hosts": [os.environ['REDIS_URL']],
-            },
-        },
-    }
+#    CHANNEL_LAYERS = {
+#        'default': {
+#            'BACKEND': 'channels_redis.core.RedisChannelLayer',
+#            'CONFIG': {
+#                "hosts": [os.environ['REDIS_URL']],
+#            },
+#        },
+#    }
 
 try:
     from .local import *
