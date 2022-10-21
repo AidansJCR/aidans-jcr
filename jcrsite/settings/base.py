@@ -116,7 +116,7 @@ WSGI_APPLICATION = 'jcrsite.wsgi.application'
 # Routing for channel sockets
 #ASGI_APPLICATION = "jcrsite.routing.application"
 
-#CHANNEL_LAYERS = {
+CHANNEL_LAYERS = {
     'default': {
         'BACKEND': 'channels_redis.core.RedisChannelLayer',
         'CONFIG': {
